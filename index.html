@@ -43,7 +43,7 @@
                         <div class="mx-auto max-w-max py-2 flex w-full overflow-x-auto bg-">
                             <div class="p-[5px] flex gap-2 bg-[#fff] rounded-lg">
                                 <div
-                                    id=""
+                                    id="FATBtn"
                                     class="flex items-center justify-center px-7 py-2 bg-[#E50512] hover:custom_shadow transition-all rounded-lg text-[#fff] cursor-pointer whitespace-nowrap">
                                     Find a Table
                                 </div>
@@ -195,9 +195,8 @@
                                             </button>
                                         </div>
                                     
-                                        <!-- Proceed button will be hidden initially and shown after selecting a time slot -->
-                                        <div id="proceedButton" class="hidden mt-4 w-full">
-                                            <button class="bg-blue-600 text-white py-2 px-4 rounded-md cursor-pointer font-sans w-full"
+                                        <div id="proceedButton" class="mt-4 w-full">
+                                            <button class="bg-red-600 text-white py-2 px-4 rounded-md cursor-pointer font-sans w-full"
                                                 onclick="goToNextSection()">Proceed</button>
                                         </div>
                                     </div>
@@ -303,14 +302,6 @@
                                             </span>
                                             <span id="confirmDate"></span>
                                         </li>
-                                        <li class="text-[#797979] font-sans flex items-center gap-2">
-                                            <span class="flex items-center justify-center h-7 w-7">
-                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M12 21.5C13.1819 21.5 14.3522 21.2672 15.4442 20.8149C16.5361 20.3626 17.5282 19.6997 18.364 18.864C19.1997 18.0282 19.8626 17.0361 20.3149 15.9442C20.7672 14.8522 21 13.6819 21 12.5C21 11.3181 20.7672 10.1478 20.3149 9.05585C19.8626 7.96392 19.1997 6.97177 18.364 6.13604C17.5282 5.30031 16.5361 4.63738 15.4442 4.18508C14.3522 3.73279 13.1819 3.5 12 3.5C9.61305 3.5 7.32387 4.44821 5.63604 6.13604C3.94821 7.82387 3 10.1131 3 12.5C3 14.8869 3.94821 17.1761 5.63604 18.864C7.32387 20.5518 9.61305 21.5 12 21.5ZM23 12.5C23 18.575 18.075 23.5 12 23.5C5.925 23.5 1 18.575 1 12.5C1 6.425 5.925 1.5 12 1.5C18.075 1.5 23 6.425 23 12.5ZM15 16.914L11 12.914V6H13V12.086L16.414 15.5L15 16.914Z" fill="#202020"/>
-                                                </svg>                                                                                                
-                                            </span>                                              
-                                            <span id="confirmTime"></span>
-                                        </li>
                                         <li class="text-[#797979] font-sans flex items-center gap-1">
                                             <span class="flex items-center justify-center h-7 w-7">
                                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -326,6 +317,14 @@
                                                 </svg>                                                                                                  
                                             </span>
                                             <span class="pl-2" id="confirmPeople"></span><span>People</span>
+                                        </li>
+                                        <li class="text-[#797979] font-sans flex items-center gap-2">
+                                            <span class="flex items-center justify-center h-7 w-7">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 21.5C13.1819 21.5 14.3522 21.2672 15.4442 20.8149C16.5361 20.3626 17.5282 19.6997 18.364 18.864C19.1997 18.0282 19.8626 17.0361 20.3149 15.9442C20.7672 14.8522 21 13.6819 21 12.5C21 11.3181 20.7672 10.1478 20.3149 9.05585C19.8626 7.96392 19.1997 6.97177 18.364 6.13604C17.5282 5.30031 16.5361 4.63738 15.4442 4.18508C14.3522 3.73279 13.1819 3.5 12 3.5C9.61305 3.5 7.32387 4.44821 5.63604 6.13604C3.94821 7.82387 3 10.1131 3 12.5C3 14.8869 3.94821 17.1761 5.63604 18.864C7.32387 20.5518 9.61305 21.5 12 21.5ZM23 12.5C23 18.575 18.075 23.5 12 23.5C5.925 23.5 1 18.575 1 12.5C1 6.425 5.925 1.5 12 1.5C18.075 1.5 23 6.425 23 12.5ZM15 16.914L11 12.914V6H13V12.086L16.414 15.5L15 16.914Z" fill="#202020"/>
+                                                </svg>                                                                                                
+                                            </span>                                              
+                                            <span id="confirmTime"></span>
                                         </li>
                                         <li class="text-[#797979] font-sans flex items-center gap-2">
                                             <span class="flex items-center justify-center h-7 w-7">
@@ -370,12 +369,7 @@
 
 
                 </div>
-                <div id="confirmationMessage" class="hidden p-6">
-                    <div class="flex items-center justify-end">
-                        <span class="cursor-pointer rounded-full h-[34px] w-[34px] flex items-center justify-center bg-[#F2F2F2]" onclick="reservation_popup_close()">
-                            <svg class="fill-[#000] h-[23px] w-[23px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-                        </span>
-                    </div>
+                <div id="confirmationMessage" class="hidden px-6 py-12">
                     <img src="./img/lastPopup.png" class="mx-auto" alt="">
                     <div>
                         <p class="text-[#797979] text-center font-sans">Thanks for Confirming your Reservation in <span class="text-[#000]">Bice Mare Restaurant</span></p>
@@ -398,17 +392,17 @@
 
 
     <!-- <div class="flex gap-2 items-start">
-                                        <input type="checkbox" class="mt-1.5" name="checkbox1" required id="checkbox1">
-                                        <label for="checkbox1" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
-                                    </div>
-                                    <div class="flex gap-2 items-start">
-                                        <input type="checkbox" class="mt-1.5" name="checkbox2" required id="checkbox2">
-                                        <label for="checkbox2" class="text-[#797979] font-sans">Sign me up to receive dining offers and news from this restaurant by email </label>
-                                    </div>
-                                    <div class="flex gap-2 items-start">
-                                        <input type="checkbox" class="mt-1.5" name="checkbox3" required id="checkbox3">
-                                        <label for="checkbox3" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
-                                    </div> -->
+        <input type="checkbox" class="mt-1.5" name="checkbox1" required id="checkbox1">
+        <label for="checkbox1" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
+    </div>
+    <div class="flex gap-2 items-start">
+        <input type="checkbox" class="mt-1.5" name="checkbox2" required id="checkbox2">
+        <label for="checkbox2" class="text-[#797979] font-sans">Sign me up to receive dining offers and news from this restaurant by email </label>
+    </div>
+    <div class="flex gap-2 items-start">
+        <input type="checkbox" class="mt-1.5" name="checkbox3" required id="checkbox3">
+        <label for="checkbox3" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
+    </div> -->
 
 
 
@@ -419,30 +413,30 @@
 
     <script>
 
-    function toggleTimeDropdown(event) {
-        event.stopPropagation();
-        const dropdown = document.getElementById('timeDropdown2');
-        dropdown.classList.toggle('hidden');
-    }
+        function toggleTimeDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('timeDropdown2');
+            dropdown.classList.toggle('hidden');
+        }
 
-    function selectTimeOption(time) {
-        document.getElementById('timeInput').innerText = time;
-        const dropdown = document.getElementById('timeDropdown2');
-        dropdown.classList.add('hidden');
-    }
+        function selectTimeOption(time) {
+            document.getElementById('timeInput').innerText = time;
+            const dropdown = document.getElementById('timeDropdown2');
+            dropdown.classList.add('hidden');
+        }
 
-    document.addEventListener('click', () => {
-        const dropdown = document.getElementById('timeDropdown2');
-        dropdown.classList.add('hidden');
-    });
+        document.addEventListener('click', () => {
+            const dropdown = document.getElementById('timeDropdown2');
+            dropdown.classList.add('hidden');
+        });
 
-    const dateInput = document.getElementById('dateInput');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
+        const dateInput = document.getElementById('dateInput');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
 
-    dateInput.addEventListener('focus', (e) => {
-        e.target.showPicker();
-    });
+        dateInput.addEventListener('focus', (e) => {
+            e.target.showPicker();
+        });
 
 
 
@@ -506,81 +500,82 @@
 
 
         function findTable() {
-    if (result.seating === "Terrace") {
-        const rowRadioBtns = document.querySelector('input[name="row"]:checked');
+            if (result.seating === "Terrace") {
+                const rowRadioBtns = document.querySelector('input[name="row"]:checked');
 
-        if (!rowRadioBtns) {
-            alert("Please select a row preference.");
-            return;
+                if (!rowRadioBtns) {
+                    alert("Please select a row preference.");
+                    return;
+                }
+
+                result.rowPreference = rowRadioBtns.value || "N/A";
+            }
+
+            if (
+                !result.people ||
+                !document.getElementById("dateInput").value ||
+                !result.time ||
+                !result.seating
+            ) {
+                alert("Please fill out all fields before finding a table.");
+                return;
+            }
+
+            document.getElementById("timeSlots").classList.remove("hidden");
+            document.querySelector(".finttablebtn").classList.add("hidden");
         }
 
-        result.rowPreference = rowRadioBtns.value || "N/A";
-    }
-
-    if (
-        !result.people ||
-        !document.getElementById("dateInput").value ||
-        !result.time ||
-        !result.seating
-    ) {
-        alert("Please fill out all fields before finding a table.");
-        return;
-    }
-
-    document.getElementById("timeSlots").classList.remove("hidden");
-    document.querySelector(".finttablebtn").classList.add("hidden");
-}
 
 
+        let selectedTimeSlot = null;
 
-let selectedTimeSlot = null;
+        function selectTimeSlot(selectedTime) {
+            console.log(`Selected time slot: ${selectedTime}`);
 
-function selectTimeSlot(selectedTime) {
-    console.log(`Selected time slot: ${selectedTime}`);
+            document.getElementById('proceedButton').classList.remove('hidden');
 
-    document.getElementById('proceedButton').classList.remove('hidden');
+            const buttons = document.querySelectorAll('#timeSlots button');
+            buttons.forEach(button => {
+                button.classList.remove('!bg-[#FDEBEC]', '!text-[#797979]');
+                // button.classList.add('!bg-[#FDEBEC]'); 
+            });
+            event.target.classList.add('!bg-[#FDEBEC]', '!text-[#797979]');
+        }
 
-    const buttons = document.querySelectorAll('#timeSlots button');
-    buttons.forEach(button => {
-        button.classList.remove('bg-blue-600');
-        button.classList.add('bg-[#E50512]'); 
-    });
-    event.target.classList.add('bg-blue-600');
-}
+        function goToNextSection() {
+            let details_section = document.getElementById('details_section');
+            details_section.classList.toggle('hidden');
+            const selectedDate = document.getElementById('dateInput').value;
 
-function goToNextSection() {
-    let details_section = document.getElementById('details_section');
-    details_section.classList.toggle('hidden');
-    const selectedDate = document.getElementById('dateInput').value;
+            document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
+            document.getElementById('confirmTime').textContent = result.time || 'Not Selected'; // Change this line
+            document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
+            document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
+            document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
 
-    document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
-    document.getElementById('confirmTime').textContent = result.time || 'Not Selected'; // Change this line
-    document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
-    document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
-    document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
+            const inputs_grid = document.getElementById('inputs_grid');
+            let timeSlots = document.getElementById('timeSlots');
+            let error_message = document.getElementById('error_message');
+            let position_image1 = document.querySelector('.position_image1');
+            let position_image2 = document.querySelector('.position_image2');
+            let radiobtnMain = document.getElementById("radioBtns");
 
-    const inputs_grid = document.getElementById('inputs_grid');
-    let timeSlots = document.getElementById('timeSlots');
-    let error_message = document.getElementById('error_message');
-    let position_image1 = document.querySelector('.position_image1');
-    let position_image2 = document.querySelector('.position_image2');
-    let radiobtnMain = document.getElementById("radioBtns");
+            const fatBtn = document.getElementById('FATBtn');
+            const ytBtn = document.getElementById('YTBtn');
 
-    const fatBtn = document.getElementById('FATBtn');
-    const ytBtn = document.getElementById('YTBtn');
+            fatBtn.classList.remove('bg-[#E50512]');
+            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
 
-    // fatBtn.classList.remove('bg-[#E50512]');
-    fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
+            ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
+            ytBtn.classList.remove('cursor-not-allowed');
 
-    ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]');
-
-    inputs_grid.classList.add('hidden');
-    timeSlots.classList.add('hidden');
-    error_message.classList.add('hidden');
-    position_image1.classList.add('bottom-[76%]', 'h-[200px]');
-    position_image2.classList.add('bottom-[20%]', 'h-[290px]');
-    radiobtnMain.classList.add('hidden');
-}
+            inputs_grid.classList.add('hidden');
+            timeSlots.classList.add('!hidden');
+            error_message.classList.add('hidden');
+            position_image1.classList.add('bottom-[76%]', 'h-[200px]');
+            position_image2.classList.add('bottom-[20%]', 'h-[290px]');
+            radiobtnMain.classList.add('hidden');
+        }
 
 
 // function setOtherDetails() {
@@ -640,39 +635,39 @@ function goToNextSection() {
 
 
         function confirmReservation(event) {
-    event.preventDefault();
-    
-    const firstName = document.querySelector('input[placeholder="First Name"]').value.trim();
-    const lastName = document.querySelector('input[placeholder="Last Name"]').value.trim();
-    const email = document.querySelector('input[type="email"]').value.trim();
+            event.preventDefault();
+            
+            const firstName = document.querySelector('input[placeholder="First Name"]').value.trim();
+            const lastName = document.querySelector('input[placeholder="Last Name"]').value.trim();
+            const email = document.querySelector('input[type="email"]').value.trim();
 
-    const selectedPeople = document.querySelector('#peopleDropdown').textContent.trim();
-    const selectedTime = document.querySelector('#timeDropdown').textContent.trim();
-    const selectedSeating = document.querySelector('#seatingDropdown').textContent.trim();
-    
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const selectedPeople = document.querySelector('#peopleDropdown').textContent.trim();
+            const selectedTime = document.querySelector('#timeDropdown').textContent.trim();
+            const selectedSeating = document.querySelector('#seatingDropdown').textContent.trim();
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Log form data to the console
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Selected People:", selectedPeople);
-    console.log("Selected Time:", selectedTime);
-    console.log("Selected Seating:", selectedSeating);
+            // Log form data to the console
+            console.log("First Name:", firstName);
+            console.log("Last Name:", lastName);
+            console.log("Email:", email);
+            console.log("Selected People:", selectedPeople);
+            console.log("Selected Time:", selectedTime);
+            console.log("Selected Seating:", selectedSeating);
 
-    if (firstName && lastName && emailRegex.test(email) &&
-        selectedPeople !== 'People' && selectedTime !== 'Time' && selectedSeating !== 'Seating') {
-        document.getElementById('clise_at_last').classList.add('hidden');
-        document.getElementById('confirmationMessage').classList.remove('hidden');
-    } else {
-        alert('Please fill in all required fields and make all selections before confirming.');
-    }
-    
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-}
+            if (firstName && lastName && emailRegex.test(email) &&
+                selectedPeople !== 'People' && selectedTime !== 'Time' && selectedSeating !== 'Seating') {
+                document.getElementById('clise_at_last').classList.add('hidden');
+                document.getElementById('confirmationMessage').classList.remove('hidden');
+            } else {
+                alert('Please fill in all required fields and make all selections before confirming.');
+            }
+            
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+        }
 
 
 
@@ -691,104 +686,104 @@ function goToNextSection() {
 
 
         async function fetchCountries() {
-    const response = await fetch('https://restcountries.com/v3.1/all');
-    const countries = await response.json();
-    return countries;
-}
-
-async function initCountryDropdown() {
-    const countries = await fetchCountries();
-    const countryOptions = document.getElementById('countryOptions');
-
-    // Clear existing options
-    countryOptions.innerHTML = `
-        <li>
-            <input type="text" id="countrySearch" placeholder="Search country..." class="w-full p-2 border border-[#D2D2D2] rounded-md" onkeyup="filterCountries()">
-        </li>
-    `;
-
-    // Sort countries alphabetically
-    countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
-
-    countries.forEach(country => {
-        const callingCode = country.idd && country.idd.root && country.idd.suffixes 
-            ? `${country.idd.root}${country.idd.suffixes[0]}` 
-            : 'N/A';
-
-        const li = document.createElement('li');
-        li.className = 'flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100';
-        li.onclick = () => selectCountry(country.name.common, country.flags.png, callingCode);
-
-        const flagImg = document.createElement('img');
-        flagImg.src = country.flags.png;
-        flagImg.className = 'w-5 h-5 mr-2';
-        flagImg.alt = `${country.name.common} Flag`;
-
-        const countryText = document.createTextNode(` ${country.name.common} (${callingCode})`);
-
-        li.appendChild(flagImg);
-        li.appendChild(countryText);
-
-        countryOptions.appendChild(li);
-    });
-
-    // Automatically select UAE as the default option
-    const uaeCountry = countries.find(country => country.name.common === "United Arab Emirates");
-    if (uaeCountry) {
-        const callingCode = uaeCountry.idd && uaeCountry.idd.root && uaeCountry.idd.suffixes 
-            ? `${uaeCountry.idd.root}${uaeCountry.idd.suffixes[0]}` 
-            : 'N/A';
-        selectCountry(uaeCountry.name.common, uaeCountry.flags.png, callingCode);
-    }
-
-    // Close the dropdown by default
-    countryOptions.classList.add('hidden');
-}
-
-function selectCountry(name, flag, code) {
-    document.getElementById('selectedFlag').src = flag;
-    document.getElementById('selectedCountryCode').textContent = code;
-    toggleCountryOptions();
-}
-
-// Toggle dropdown visibility
-function toggleCountryOptions() {
-    const options = document.getElementById('countryOptions');
-    options.classList.toggle('hidden');
-}
-
-// Close the dropdown when clicking outside
-document.addEventListener('click', function (e) {
-    const dropdown = document.getElementById('countryOptions');
-    const inputField = document.getElementById('countryDropdown');
-
-    // Check if the click was outside the dropdown and the input field
-    if (!dropdown.contains(e.target) && e.target !== inputField) {
-        dropdown.classList.add('hidden');
-    }
-});
-
-// Filter countries based on search input
-function filterCountries() {
-    const input = document.getElementById('countrySearch').value.toLowerCase();
-    const options = document.getElementById('countryOptions');
-    const liItems = options.getElementsByTagName('li');
-
-    Array.from(liItems).forEach((li, index) => {
-        if (index > 0) { // Skip the search input
-            const countryName = li.textContent.toLowerCase();
-            li.style.display = countryName.includes(input) ? '' : 'none';
+            const response = await fetch('https://restcountries.com/v3.1/all');
+            const countries = await response.json();
+            return countries;
         }
-    });
-}
 
-// Add an event listener to the phone number input
-document.getElementById('phoneNumber').addEventListener('input', function(e) {
-    // Allow only numbers and restrict input length to 14 characters
-    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 14);
-});
+        async function initCountryDropdown() {
+            const countries = await fetchCountries();
+            const countryOptions = document.getElementById('countryOptions');
 
-window.onload = initCountryDropdown;
+            // Clear existing options
+            countryOptions.innerHTML = `
+                <li>
+                    <input type="text" id="countrySearch" placeholder="Search country..." class="w-full p-2 border border-[#D2D2D2] rounded-md" onkeyup="filterCountries()">
+                </li>
+            `;
+
+            // Sort countries alphabetically
+            countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+            countries.forEach(country => {
+                const callingCode = country.idd && country.idd.root && country.idd.suffixes 
+                    ? `${country.idd.root}${country.idd.suffixes[0]}` 
+                    : 'N/A';
+
+                const li = document.createElement('li');
+                li.className = 'flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100';
+                li.onclick = () => selectCountry(country.name.common, country.flags.png, callingCode);
+
+                const flagImg = document.createElement('img');
+                flagImg.src = country.flags.png;
+                flagImg.className = 'w-5 h-5 mr-2';
+                flagImg.alt = `${country.name.common} Flag`;
+
+                const countryText = document.createTextNode(` ${country.name.common} (${callingCode})`);
+
+                li.appendChild(flagImg);
+                li.appendChild(countryText);
+
+                countryOptions.appendChild(li);
+            });
+
+            // Automatically select UAE as the default option
+            const uaeCountry = countries.find(country => country.name.common === "United Arab Emirates");
+            if (uaeCountry) {
+                const callingCode = uaeCountry.idd && uaeCountry.idd.root && uaeCountry.idd.suffixes 
+                    ? `${uaeCountry.idd.root}${uaeCountry.idd.suffixes[0]}` 
+                    : 'N/A';
+                selectCountry(uaeCountry.name.common, uaeCountry.flags.png, callingCode);
+            }
+
+            // Close the dropdown by default
+            countryOptions.classList.add('hidden');
+        }
+
+        function selectCountry(name, flag, code) {
+            document.getElementById('selectedFlag').src = flag;
+            document.getElementById('selectedCountryCode').textContent = code;
+            toggleCountryOptions();
+        }
+
+        // Toggle dropdown visibility
+        function toggleCountryOptions() {
+            const options = document.getElementById('countryOptions');
+            options.classList.toggle('hidden');
+        }
+
+        // Close the dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            const dropdown = document.getElementById('countryOptions');
+            const inputField = document.getElementById('countryDropdown');
+
+            // Check if the click was outside the dropdown and the input field
+            if (!dropdown.contains(e.target) && e.target !== inputField) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Filter countries based on search input
+        function filterCountries() {
+            const input = document.getElementById('countrySearch').value.toLowerCase();
+            const options = document.getElementById('countryOptions');
+            const liItems = options.getElementsByTagName('li');
+
+            Array.from(liItems).forEach((li, index) => {
+                if (index > 0) { // Skip the search input
+                    const countryName = li.textContent.toLowerCase();
+                    li.style.display = countryName.includes(input) ? '' : 'none';
+                }
+            });
+        }
+
+        // Add an event listener to the phone number input
+        document.getElementById('phoneNumber').addEventListener('input', function(e) {
+            // Allow only numbers and restrict input length to 14 characters
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 14);
+        });
+
+        window.onload = initCountryDropdown;
 
 
 
