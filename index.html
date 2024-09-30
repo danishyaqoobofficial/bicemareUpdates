@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="flex items-center justify-center h-[100vh] w-full">
+        <div onclick="reservation_popup()"
+            class="border max-w-max border-[#E50512] transition-all hover:bg-[#E50512] hover:text-[#fff] tracking-wide flex items-center justify-center rounded-lg text-theme_black px-[17px] text-lg py-[7px] cursor-pointer">
+            Reservation
+        </div>
+    </section>
+
+
+
+    <section class="" id="reservation_popup_main">
+        <div class="w-full fixed z-50 top-0">
+            <div class="overflow-y-auto bg-[#fff]">
+                <div class="" id="clise_at_last">
+                    <div class="px-5 md:px-8 lg:px-14 py-4 md:py-5 lg:py-9 space-y-8 max-w-[1200px] w-full mx-auto">
+                        <div class="flex items-center justify-between">
+                            <p class="text-[#E50512] text-xl md:text-2xl ">Sign In</p>
+                            <span class="cursor-pointer" onclick="reservation_popup_close()">
+                                <svg class="fill-[#fff] h-[34px] w-[34px]" viewBox="0 0 40 40" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <circle cx="20" cy="20" r="20" fill="#F2F2F2" />
+                                    <mask id="mask0_263_1405" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="12"
+                                        y="12" width="16" height="16">
+                                        <rect x="12" y="12" width="16" height="16" fill="url(#pattern0_263_1405)" />
+                                    </mask>
+                                    <g mask="url(#mask0_263_1405)">
+                                        <rect x="12" y="12" width="16" height="16" fill="#202020" />
+                                    </g>
+                                    <defs>
+                                        <pattern id="pattern0_263_1405" patternContentUnits="objectBoundingBox" width="1"
+                                            height="1">
+                                            <use xlink:href="#image0_263_1405" transform="scale(0.00195312)" />
+                                        </pattern>
+                                        <image id="image0_263_1405" width="512" height="512"
+                                            xlink:href="data:image/png;base64,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" />
+                                    </defs>
+                                </svg>
+                            </span>
+                        </div>
+                        <h2 class="text-[#202020] text-2xl md:text-3xl lg:text-4xl ">Reservation at BICE Mare - Dubai</h2>
+                    </div>
+                    <div class="px-6 py-2 bg-[#202020] flex items-center justify-center w-full">
+                        <div class="mx-auto max-w-max py-2 flex w-full overflow-x-auto bg-">
+                            <div class="p-[5px] flex gap-2 bg-[#fff] rounded-lg">
+                                <div
+                                    id=""
+                                    class="flex items-center justify-center px-7 py-2 bg-[#E50512] hover:custom_shadow transition-all rounded-lg text-[#fff] cursor-pointer whitespace-nowrap">
+                                    Find a Table
+                                </div>
+                                <div
+                                    id="YTBtn"
+                                    class="flex items-center justify-center px-7 py-2 hover:bg-secondry text-[#797979] hover:custom_shadow transition-all rounded-lg cursor-not-allowed whitespace-nowrap">
+                                    Your Detail
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="absolute right-0 bottom-0 z-0 position_image1 h-[160px] " src="./img/booking1.png" alt="">
+                    <img class="absolute left-0 bottom-0 z-0 position_image2 h-[200px] " src="./img/booking2.png" alt="">
+                    <div class="px-5 md:px-8 lg:px-14 py-4 md:py-5 lg:pt-5 lg:pb-12 relative space-y-5 max-w-[1200px] w-full mx-auto">
+                        <div class=""
+                            id="reservationPopup">
+                            <div id="inputForm">
+                                    <div class="grid grid-cols-2 md:grid-cols-4 border border-[#D2D2D2] divide-x divide-[#D2D2D2] rounded-lg devider-x" id="inputs_grid">
+                                        <div class="relative ">
+                                            <div class="relative h-full">
+                                                <button id="peopleDropdown"
+                                                    class="w-full relative z-30 text-[#797979] font-sans border-b border-[#D2D2D2] md:border-0 py-2 px-3 flex items-center justify-between text-left h-full">
+                                                    People
+                                                </button>
+                                                <svg class="absolute h-full z-0 right-2 top-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979"/>
+                                                </svg>                                                        
+                                            </div>
+                                            <ul id="peopleOptions"
+                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
+                                                <li class="cursor-pointer py-2 px-3 transition-all hover:bg-[#797979]/30"
+                                                    onclick="selectOption('people', '2 People')">
+                                                    2 People
+                                                </li>
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                    onclick="selectOption('people', '4 People')">
+                                                    4 People
+                                                </li>
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                    onclick="selectOption('people', '6 People')">
+                                                    6 People
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="">
+                                            <input type="date" id="dateInput" onblur="" onfocus="" class="w-full relative z-30 py-2 px-3 text-[#797979] font-sans outline-none border-b border-[#D2D2D2] md:border-0 rounded-tr-lg md:rounded-0" inputmode="numeric" />
+                                        </div>
+                                        <div class="relative">
+                                            <div class="relative h-full">
+                                                <button id="timeDropdown"
+                                                    class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
+                                                    Time
+                                                </button>
+                                                <svg class="absolute h-full z-0 right-2 top-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979"/>
+                                                </svg>    
+                                            </div>
+                                            <ul id="timeOptions"
+                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto ">
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                    onclick="selectOption('time', '6:00 PM')">
+                                                    6:00 PM
+                                                </li>
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                    onclick="selectOption('time', '7:00 PM')">
+                                                    7:00 PM
+                                                </li>
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                    onclick="selectOption('time', '8:00 PM')">
+                                                    8:00 PM
+                                                </li>
+                                            </ul>
+                                        </div>    
+                                        <div class="relative">
+                                            <div class="relative h-full">
+                                                <button id="seatingDropdown"
+                                                    class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
+                                                    Seating
+                                                </button>
+                                                <svg class="absolute h-full z-0 right-2 top-0 h-7 w-7" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979" />
+                                                </svg>
+                                            </div>
+                                            <ul id="seatingOptions"
+                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Indoor')">
+                                                    Indoor
+                                                </li>
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Terrace')">
+                                                    Terrace
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="hidden mt-4 z-30 relative" id="radioBtns">
+                                        <div class="flex gap-6 flex-wrap">
+                                            <div class="flex items-center space-x-2">
+                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                    <input type="radio" id="no-preference" name="row" value="No Preference" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                                </span>
+                                                <label for="no-preference" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">No Preference</label>
+                                            </div>
+                                    
+                                            <div class="flex items-center space-x-2">
+                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                    <input type="radio" id="first-row" name="row" value="First Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                                </span>
+                                                <label for="first-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">First Row</label>
+                                            </div>
+                                    
+                                            <div class="flex items-center space-x-2">
+                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                    <input type="radio" id="second-row" name="row" value="Second Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                                </span>
+                                                <label for="second-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">Second Row</label>
+                                            </div>
+                                    
+                                            <div class="flex items-center space-x-2">
+                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                    <input type="radio" id="last-row" name="row" value="Last Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                                </span>
+                                                <label for="last-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">Last Row</label>
+                                            </div>
+                                        </div>
+                                    </div>   
+    
+                                    <div id="timeSlots" class="hidden mt-4 z-30 relative">
+                                        <div class="grid grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 flex-wrap mt-7">
+                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                                onclick="selectTimeSlot('6:30 PM')">
+                                                6:30 PM
+                                            </button>
+                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                                onclick="selectTimeSlot('7:00 PM')">
+                                                7:00 PM
+                                            </button>
+                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                                onclick="selectTimeSlot('7:30 PM')">
+                                                7:30 PM
+                                            </button>
+                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                                onclick="selectTimeSlot('8:00 PM')">
+                                                8:00 PM
+                                            </button>
+                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                                onclick="selectTimeSlot('8:30 PM')">
+                                                8:30 PM
+                                            </button>
+                                        </div>
+                                    </div>                    
+                            </div>
+                        </div>
+                        <div onclick="findTable();"
+                            class="w-full finttablebtn rounded-lg flex items-center px-5 py-2.5 cursor-pointer relative z-40 justify-center bg-[#E50512] text-[#fff] text-xl">
+                            Find a Table
+                        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+                        <div class="space-y-4 hidden">
+                            <div class="w-full bg-[#FDEBEC] px-6 py-4 md:text-lg rounded-lg text-[#797979] font-sans z-50 relative font-medium ">
+                                Due to limited availability, we can hold this table for you for <span class="text-[#000]"> 4:19 minutes</span>
+                            </div>
+                            <div class="flex py-4 gap-10 sm:flex-row flex-col">
+                                <form class="flex-1 space-y-4" onsubmit="confirmReservation(event)">
+                                    <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="First Name" name="" id="">
+                                    <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Last Name" name="" id="">
+                                    
+                                    <div class="flex p-1.5 border border-[#D2D2D2] rounded-md w-full flex-1 relative z-50">
+                                        <div class="max-w-[120px] w-full flex items-center justify-between relative z-50">
+                                            <div class="relative w-full mx-auto z-50">
+                                                <div id="countryDropdown" class="flex cursor-pointer items-center justify-between w-full px-2 gap-1" onclick="toggleCountryOptions()">
+                                                    <div class="flex items-center font-sans gap-1">
+                                                        <img src="https://flagcdn.com/w20/us.png" id="selectedFlag" class="h-5 object-cover " alt="US Flag">
+                                                        <span id="selectedCountryCode">+1</span>
+                                                    </div>
+                                                    <svg class="w-4 h-4 text-gray-500" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.79079 8.00017L16.2108 8.00017C16.5432 7.99969 16.869 8.09336 17.1503 8.27033C17.4317 8.44731 17.6572 8.70035 17.8008 9.00017C17.9688 9.35592 18.0335 9.75171 17.9876 10.1424C17.9416 10.5332 17.7868 10.9031 17.5408 11.2102L13.3308 16.3102C13.1656 16.5008 12.9613 16.6537 12.7318 16.7585C12.5024 16.8633 12.253 16.9175 12.0008 16.9175C11.7485 16.9175 11.4992 16.8633 11.2697 16.7585C11.0403 16.6537 10.836 16.5008 10.6708 16.3102L6.46078 11.2102C6.21478 10.9031 6.05997 10.5332 6.014 10.1424C5.96803 9.75171 6.03275 9.35592 6.20079 9.00017C6.34433 8.70035 6.56984 8.44731 6.85123 8.27033C7.13262 8.09336 7.45837 7.99969 7.79079 8.00017Z" fill="#797979"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul id="countryOptions" class="absolute left-0 top-[34px] w-full mt-2 bg-[#fff] max-w-[249px] rounded-lg shadow-lg hidden z-50 max-h-[240px] overflow-y-auto font-sans">
+                                            <!-- Country options will be populated here -->
+                                        </ul>
+                                        <input type="number" minlength="1" class="border-l border-[#D2D2D2] flex-1 px-4 py-1 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Phone Number" name="" id="phoneNumber">
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <input type="email" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none relative z-40" required placeholder="Email" name="" id="">
+                                    <div class="relative">
+                                        <div class="relative h-full">
+                                            <div id="timeInput"
+                                                 class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none"
+                                                 onclick="toggleTimeDropdown(event)"
+                                            >
+                                                Select a time (optional)
+                                            </div>
+                                            <svg class="absolute h-full z-0 right-2 top-0 cursor-pointer" width="24" height="24" viewBox="0 0 24 24"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg" onclick="toggleTimeDropdown(event)">
+                                                <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z"
+                                                      fill="#797979"/>
+                                            </svg>
+                                        </div>
+                                        <ul id="timeDropdown2" class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all" onclick="selectTimeOption('6:00 PM')">6:00 PM</li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all" onclick="selectTimeOption('7:00 PM')">7:00 PM</li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all" onclick="selectTimeOption('8:00 PM')">8:00 PM</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none relative z-40" placeholder="Add a Special request (optional)" name="" id="">
+                                    <div class="flex gap-2 items-start">
+                                        <input type="checkbox" class="mt-1.5" name="checkbox1" required id="checkbox1">
+                                        <label for="checkbox1" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
+                                    </div>
+                                    <div class="flex gap-2 items-start">
+                                        <input type="checkbox" class="mt-1.5" name="checkbox2" required id="checkbox2">
+                                        <label for="checkbox2" class="text-[#797979] font-sans">Sign me up to receive dining offers and news from this restaurant by email </label>
+                                    </div>
+                                    <div class="flex gap-2 items-start">
+                                        <input type="checkbox" class="mt-1.5" name="checkbox3" required id="checkbox3">
+                                        <label for="checkbox3" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
+                                    </div>
+                                    <button 
+                                        type="button"
+                                        class="w-full rounded-lg flex items-center px-5 py-2.5 cursor-pointer relative z-40 justify-center bg-[#E50512] text-[#fff] text-xl"
+                                        onclick="confirmReservation(event)">
+                                        Confirm Reservation
+                                    </button>
+                                </form>
+                                <div class="flex-1 space-y-5">
+                                    <h4 class="text-[#202020] text-2xl">BICE Mare - Dubai</h4>
+                                    <ul class=" space-y-4">
+                                        <li class="text-[#797979] font-sans flex items-center gap-2">
+                                            <span class="flex items-center justify-center h-7 w-7">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M19 4.5H17V3.5C17 3.23478 16.8946 2.98043 16.7071 2.79289C16.5196 2.60536 16.2652 2.5 16 2.5C15.7348 2.5 15.4804 2.60536 15.2929 2.79289C15.1054 2.98043 15 3.23478 15 3.5V4.5H9V3.5C9 3.23478 8.89464 2.98043 8.70711 2.79289C8.51957 2.60536 8.26522 2.5 8 2.5C7.73478 2.5 7.48043 2.60536 7.29289 2.79289C7.10536 2.98043 7 3.23478 7 3.5V4.5H5C4.20435 4.5 3.44129 4.81607 2.87868 5.37868C2.31607 5.94129 2 6.70435 2 7.5V19.5C2 20.2956 2.31607 21.0587 2.87868 21.6213C3.44129 22.1839 4.20435 22.5 5 22.5H19C19.7956 22.5 20.5587 22.1839 21.1213 21.6213C21.6839 21.0587 22 20.2956 22 19.5V7.5C22 6.70435 21.6839 5.94129 21.1213 5.37868C20.5587 4.81607 19.7956 4.5 19 4.5ZM20 19.5C20 19.7652 19.8946 20.0196 19.7071 20.2071C19.5196 20.3946 19.2652 20.5 19 20.5H5C4.73478 20.5 4.48043 20.3946 4.29289 20.2071C4.10536 20.0196 4 19.7652 4 19.5V12.5H20V19.5ZM20 10.5H4V7.5C4 7.23478 4.10536 6.98043 4.29289 6.79289C4.48043 6.60536 4.73478 6.5 5 6.5H7V7.5C7 7.76522 7.10536 8.01957 7.29289 8.20711C7.48043 8.39464 7.73478 8.5 8 8.5C8.26522 8.5 8.51957 8.39464 8.70711 8.20711C8.89464 8.01957 9 7.76522 9 7.5V6.5H15V7.5C15 7.76522 15.1054 8.01957 15.2929 8.20711C15.4804 8.39464 15.7348 8.5 16 8.5C16.2652 8.5 16.5196 8.39464 16.7071 8.20711C16.8946 8.01957 17 7.76522 17 7.5V6.5H19C19.2652 6.5 19.5196 6.60536 19.7071 6.79289C19.8946 6.98043 20 7.23478 20 7.5V10.5Z" fill="#202020"/>
+                                                </svg>                                                    
+                                            </span>
+                                            <span id="confirmDate"></span>
+                                        </li>
+                                        <li class="text-[#797979] font-sans flex items-center gap-2">
+                                            <span class="flex items-center justify-center h-7 w-7">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 21.5C13.1819 21.5 14.3522 21.2672 15.4442 20.8149C16.5361 20.3626 17.5282 19.6997 18.364 18.864C19.1997 18.0282 19.8626 17.0361 20.3149 15.9442C20.7672 14.8522 21 13.6819 21 12.5C21 11.3181 20.7672 10.1478 20.3149 9.05585C19.8626 7.96392 19.1997 6.97177 18.364 6.13604C17.5282 5.30031 16.5361 4.63738 15.4442 4.18508C14.3522 3.73279 13.1819 3.5 12 3.5C9.61305 3.5 7.32387 4.44821 5.63604 6.13604C3.94821 7.82387 3 10.1131 3 12.5C3 14.8869 3.94821 17.1761 5.63604 18.864C7.32387 20.5518 9.61305 21.5 12 21.5ZM23 12.5C23 18.575 18.075 23.5 12 23.5C5.925 23.5 1 18.575 1 12.5C1 6.425 5.925 1.5 12 1.5C18.075 1.5 23 6.425 23 12.5ZM15 16.914L11 12.914V6H13V12.086L16.414 15.5L15 16.914Z" fill="#202020"/>
+                                                </svg>                                                                                                
+                                            </span>                                              
+                                            <span id="confirmTime"></span>
+                                        </li>
+                                        <li class="text-[#797979] font-sans flex items-center gap-1">
+                                            <span class="flex items-center justify-center h-7 w-7">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.20366 3.36377C5.07439 3.36377 4.1582 4.27996 4.1582 5.40922V10.182C4.1582 11.1953 4.89542 12.0365 5.86275 12.1993V14.9828C4.89542 15.1456 4.1582 15.9868 4.1582 17.0002V18.3638C4.1582 19.4931 5.07439 20.4093 6.20366 20.4093V23.1365C6.20366 23.5133 6.50876 23.8184 6.88548 23.8184C7.26219 23.8184 7.56729 23.5133 7.56729 23.1365V20.4093H16.4309V23.1365C16.4309 23.5133 16.736 23.8184 17.1127 23.8184C17.4895 23.8184 17.7946 23.5133 17.7946 23.1365V20.4093C18.9238 20.4093 19.84 19.4931 19.84 18.3638V17.0002C19.84 15.9868 19.1028 15.1456 18.1355 14.9828V12.1993C19.1028 12.0365 19.84 11.1953 19.84 10.182V5.40922C19.84 4.27996 18.9238 3.36377 17.7946 3.36377H6.20366ZM16.7719 12.2274H7.22649V14.9547H16.7719V12.2274Z" fill="#202020"/>
+                                                </svg>                                                                                                                                            
+                                            </span>    
+                                            <span class="pl-2" id="confirmSeating"></span>-<span id="confirmRow"></span>
+                                        </li>
+                                        <li class="text-[#797979] font-sans flex items-center gap-1">
+                                            <span class="flex items-center justify-center h-7 w-7">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15 7.25C15 8.04565 14.6839 8.80871 14.1213 9.37132C13.5587 9.93393 12.7956 10.25 12 10.25C11.2044 10.25 10.4413 9.93393 9.87868 9.37132C9.31607 8.80871 9 8.04565 9 7.25C9 6.45435 9.31607 5.69129 9.87868 5.12868C10.4413 4.56607 11.2044 4.25 12 4.25C12.7956 4.25 13.5587 4.56607 14.1213 5.12868C14.6839 5.69129 15 6.45435 15 7.25ZM17.25 7.25C17.25 8.64239 16.6969 9.97774 15.7123 10.9623C14.7277 11.9469 13.3924 12.5 12 12.5C10.6076 12.5 9.27226 11.9469 8.28769 10.9623C7.30312 9.97774 6.75 8.64239 6.75 7.25C6.75 5.85761 7.30312 4.52226 8.28769 3.53769C9.27226 2.55312 10.6076 2 12 2C13.3924 2 14.7277 2.55312 15.7123 3.53769C16.6969 4.52226 17.25 5.85761 17.25 7.25ZM3.75 19.25C3.75 18.944 4.08 18.0365 5.73 17.0615C7.257 16.16 9.48 15.5 12 15.5C14.52 15.5 16.743 16.16 18.27 17.0615C19.92 18.0365 20.25 18.944 20.25 19.25C20.25 19.6478 20.092 20.0294 19.8107 20.3107C19.5294 20.592 19.1478 20.75 18.75 20.75H5.25C4.85218 20.75 4.47064 20.592 4.18934 20.3107C3.90804 20.0294 3.75 19.6478 3.75 19.25ZM12 13.25C6.225 13.25 1.5 16.25 1.5 19.25C1.5 20.2446 1.89509 21.1984 2.59835 21.9016C3.30161 22.6049 4.25544 23 5.25 23H18.75C19.7446 23 20.6984 22.6049 21.4016 21.9016C22.1049 21.1984 22.5 20.2446 22.5 19.25C22.5 16.25 17.775 13.25 12 13.25Z" fill="black"/>
+                                                </svg>                                                                                                  
+                                            </span>
+                                            <span class="pl-2" id="confirmPeople"></span><span>People</span>
+                                        </li>
+                                        <li class="text-[#797979] font-sans flex items-center gap-2">
+                                            <span class="flex items-center justify-center h-7 w-7">
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 2.5C7.6 2.5 4 6.1 4 10.5C4 15.9 11 22 11.3 22.3C11.5 22.4 11.8 22.5 12 22.5C12.2 22.5 12.5 22.4 12.7 22.3C13 22 20 15.9 20 10.5C20 6.1 16.4 2.5 12 2.5ZM12 20.2C9.9 18.2 6 13.9 6 10.5C6 7.2 8.7 4.5 12 4.5C15.3 4.5 18 7.2 18 10.5C18 13.8 14.1 18.2 12 20.2ZM12 6.5C9.8 6.5 8 8.3 8 10.5C8 12.7 9.8 14.5 12 14.5C14.2 14.5 16 12.7 16 10.5C16 8.3 14.2 6.5 12 6.5ZM12 12.5C10.9 12.5 10 11.6 10 10.5C10 9.4 10.9 8.5 12 8.5C13.1 8.5 14 9.4 14 10.5C14 11.6 13.1 12.5 12 12.5Z" fill="black"/>
+                                                </svg>                                                                                                                                                 
+                                            </span>
+                                            <span>Level 3, Souk al bahar Dubai, Dubai 3371500</span>
+                                        </li>
+                                    </ul>
+
+
+
+                                    <h4 class="text-[#202020] text-2xl">What to know Before you go</h4>
+                                    <div class="rounded-xl bg-[#202020] w-full p-7 space-y-3">
+                                        <h3 class="text-[#fff] font-semibold font-sans">Important Dining Information</h3>
+                                        <p class="text-[#fff] font-sans font-light text-sm">We have a 15 minutes grace period. Please call us if your are running later than 15 minutes after tour reservation time. </p>
+                                        <p class="text-[#fff] font-sans font-light text-sm">Your table will be reserved for 2 hours for parties of up to 4; 2 hours 15 minutes for parties of up to 6; and 2 hours 30 minutes....</p>
+                                        <p class="text-[#E50512] cursor-pointer font-medium">+ Read More</p>
+                                    </div>
+                                    <div class="rounded-xl bg-[#202020] w-full p-7 space-y-3">
+                                        <h3 class="text-[#fff] font-semibold font-sans">A Note from the Restaurant</h3>
+                                        <li class="text-[#fff] font-sans font-light text-sm">Minimum Spend Policy: A minimum order of a starter and main course per person for a table  outdoor</li>
+                                        <li class="text-[#fff] font-sans font-light text-sm">Terrace is smoking area (Cigars not allowed)</li>
+                                        <li class="text-[#fff] font-sans font-light text-sm">TeKindly note that table preference are noted and will be provided subject to availablity</li>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-[#797979] font-sans md:text-lg">By using “Confirm Reservation “ you are agreeing to the terms and conditions of the <span class="text-[#E50512]">BICE Mare User Agreement and Privacy Policy. </span> *Message & date rates may apply. you can opt out of receiving text messages at any time in your account setting or by replying STOP.</p>
+                            <p class="text-[#797979] font-sans md:text-lg">Certain U.S. consumers may have additional data rights, which can be exercised by clicking <span class="text-[#E50512]">Do Not Sell or Share My Personal Information </span></p>
+                        </div>
+    
+
+
+
+
+                        <div class="w-full bg-[#FDEBEC] px-3 md:px-6 py-3 md:py-4 md:text-lg rounded-lg text-[#797979] font-sans z-30 relative " id="error_message">
+                            Unfortunately, your party is <span class="text-[#000]">too large</span> to make an online reservation at BICE Mare Dubai. We recommend Contacting the restaurant directly.
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div id="confirmationMessage" class="hidden p-6">
+                    <div class="flex items-center justify-end">
+                        <span class="cursor-pointer rounded-full h-[34px] w-[34px] flex items-center justify-center bg-[#F2F2F2]" onclick="reservation_popup_close()">
+                            <svg class="fill-[#000] h-[23px] w-[23px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                        </span>
+                    </div>
+                    <img src="./img/lastPopup.png" class="mx-auto" alt="">
+                    <div>
+                        <p class="text-[#797979] text-center font-sans">Thanks for Confirming your Reservation in <span class="text-[#000]">Bice Mare Restaurant</span></p>
+                        <p class="text-[#797979] text-center font-sans">You should receive a <span class="text-[#000]">confirmation email</span> soon.</p>
+                    </div>
+                    <a href="/"
+                       class="w-full rounded-lg flex items-center px-5 py-2 max-w-max cursor-pointer relative z-40 justify-center bg-[#E50512] text-[#fff] text-xl mx-auto my-5">
+                       Go Home
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+    function toggleTimeDropdown(event) {
+        event.stopPropagation();
+        const dropdown = document.getElementById('timeDropdown2');
+        dropdown.classList.toggle('hidden');
+    }
+
+    function selectTimeOption(time) {
+        document.getElementById('timeInput').innerText = time;
+        const dropdown = document.getElementById('timeDropdown2');
+        dropdown.classList.add('hidden');
+    }
+
+    document.addEventListener('click', () => {
+        const dropdown = document.getElementById('timeDropdown2');
+        dropdown.classList.add('hidden');
+    });
+
+    const dateInput = document.getElementById('dateInput');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    dateInput.addEventListener('focus', (e) => {
+        e.target.showPicker();
+    });
+
+
+
+
+        let reservation_popup_main = document.getElementById('reservation_popup_main');
+
+        function reservation_popup() {
+            reservation_popup_main.classList.add('!block');
+        }
+
+        function reservation_popup_close() {
+            reservation_popup_main.classList.remove('!block');
+            location.reload();
+        }
+
+        const result = {
+            people: "",
+            time: "",
+            seating: "",
+            rowPreference: ""
+        };
+
+
+        document.addEventListener("click", function (e) {
+            if (e.target.id === "peopleDropdown") {
+                toggleDropdown("peopleOptions");
+            } else if (e.target.id === "timeDropdown") {
+                toggleDropdown("timeOptions");
+            } else if (e.target.id === "seatingDropdown") {
+                toggleDropdown("seatingOptions");
+            } else {
+                closeAllDropdowns();
+            }
+        });
+
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            dropdown.classList.toggle("hidden");
+        }
+
+        function closeAllDropdowns() {
+            document.getElementById("peopleOptions")?.classList.add("hidden");
+            document.getElementById("timeOptions")?.classList.add("hidden");
+            document.getElementById("seatingOptions")?.classList.add("hidden");
+        }
+
+        function selectOption(field, value) {
+            document.getElementById(field + "Dropdown").innerText = value;
+            result[field] = value;
+
+            document.getElementById(field + "Options").classList.add("hidden");
+
+            if (field === 'seating') {
+                if (value === 'Terrace') {
+                    document.getElementById("radioBtns").classList.remove("hidden");
+                } else {
+                    document.getElementById("radioBtns").classList.add("hidden");
+                }
+            }
+        }
+
+
+        function findTable() {
+    if (result.seating === "Terrace") {
+        const rowRadioBtns = document.querySelector('input[name="row"]:checked');
+
+        if (!rowRadioBtns) {
+            alert("Please select a row preference.");
+            return;
+        }
+
+        result.rowPreference = rowRadioBtns.value || "N/A";
+    }
+
+    if (
+        !result.people ||
+        !document.getElementById("dateInput").value ||
+        !result.time ||
+        !result.seating
+    ) {
+        alert("Please fill out all fields before finding a table.");
+        return;
+    }
+
+    document.getElementById("timeSlots").classList.remove("hidden");
+    document.querySelector(".finttablebtn").classList.add("hidden");
+}
+
+
+
+        let selectedTimeSlot = null;
+
+        function selectTimeSlot(time) {
+            if (selectedTimeSlot) {
+                alert("You have already selected a time slot.");
+                return;
+            }
+
+            selectedTimeSlot = time;
+
+            document.getElementById('confirmTime').textContent = `Selected Time: ${time}`;
+            document.querySelector('.space-y-4').classList.remove('hidden');
+
+            const fatBtn = document.getElementById('FATBtn');
+            const ytBtn = document.getElementById('YTBtn');
+
+            console.log('Before:', fatBtn.classList, ytBtn.classList);
+
+            fatBtn.classList.remove('bg-[#E50512]');
+            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
+
+            ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]');
+
+            console.log('After:', fatBtn.classList, ytBtn.classList);
+
+            const inputs_grid = document.getElementById('inputs_grid');
+            let timeSlots = document.getElementById('timeSlots');
+            let error_message = document.getElementById('error_message');
+            let position_image1 = document.querySelector('.position_image1');
+            let position_image2 = document.querySelector('.position_image2');
+            let radiobtnMain = document.getElementById("radioBtns");
+
+            inputs_grid.classList.add('hidden');
+            timeSlots.classList.add('hidden');
+            error_message.classList.add('hidden');
+            position_image1.classList.add('bottom-[76%]', 'h-[200px]');
+            position_image2.classList.add('bottom-[20%]', 'h-[290px]');
+            radiobtnMain.classList.add('hidden');
+        }
+
+
+        function selectTimeSlot(time) {
+    if (selectedTimeSlot) {
+        alert("You have already selected a time slot.");
+        return;
+    }
+
+    selectedTimeSlot = time;
+    document.getElementById('confirmTime').textContent = `Selected Time: ${time}`;
+
+    document.querySelector('.space-y-4').classList.remove('hidden');
+    setOtherDetails();
+}
+
+
+
+    function setOtherDetails() {
+        const selectedDate = document.getElementById('dateInput').value;
+
+    document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
+    document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
+    document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
+    document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
+
+
+
+            const inputs_grid = document.getElementById('inputs_grid');
+            let timeSlots = document.getElementById('timeSlots');
+            let error_message = document.getElementById('error_message');
+            let position_image1 = document.querySelector('.position_image1');
+            let position_image2 = document.querySelector('.position_image2');
+            let radiobtnMain = document.getElementById("radioBtns");
+
+
+
+            const fatBtn = document.getElementById('FATBtn');
+            const ytBtn = document.getElementById('YTBtn');
+
+            console.log('Before:', fatBtn.classList, ytBtn.classList);
+
+            fatBtn.classList.remove('bg-[#E50512]');
+            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
+
+            ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]');
+
+            inputs_grid.classList.add('hidden');
+            timeSlots.classList.add('hidden');
+            error_message.classList.add('hidden');
+            position_image1.classList.add('bottom-[76%]', 'h-[200px]');
+            position_image2.classList.add('bottom-[20%]', 'h-[290px]');
+            radiobtnMain.classList.add('hidden');
+}
+
+// document.getElementById('FATBtn').addEventListener('click', setOtherDetails);
+
+
+
+        // setOtherDetails();
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function confirmReservation(event) {
+            event.preventDefault();
+            
+            const firstName = document.querySelector('input[placeholder="First Name"]').value.trim();
+            const lastName = document.querySelector('input[placeholder="Last Name"]').value.trim();
+            const email = document.querySelector('input[type="email"]').value.trim();
+            
+            const checkbox1 = document.getElementById('checkbox1').checked;
+            const checkbox2 = document.getElementById('checkbox2').checked;
+            const checkbox3 = document.getElementById('checkbox3').checked;
+
+            const selectedPeople = document.querySelector('#peopleDropdown').textContent.trim();
+            const selectedTime = document.querySelector('#timeDropdown').textContent.trim();
+            const selectedSeating = document.querySelector('#seatingDropdown').textContent.trim();
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            
+            if (firstName && lastName && emailRegex.test(email) && checkbox1 && checkbox2 && checkbox3 &&
+            selectedPeople !== 'People' && selectedTime !== 'Time' && selectedSeating !== 'Seating') {
+                document.getElementById('clise_at_last').classList.add('hidden');
+                document.getElementById('confirmationMessage').classList.remove('hidden');
+            } else {
+                alert('Please fill in all required fields and make all selections before confirming.');
+            }
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+        }
+
+
+
+
+
+
+
+        async function fetchCountries() {
+            const response = await fetch('https://restcountries.com/v3.1/all');
+            const countries = await response.json();
+            return countries;
+        }
+
+        async function initCountryDropdown() {
+            const countries = await fetchCountries();
+            const countryOptions = document.getElementById('countryOptions');
+
+            countryOptions.innerHTML = '';
+
+            // Filter countries to start from Afghanistan
+            const startFromIndex = countries.findIndex(country => country.name.common === "Afghanistan");
+            const filteredCountries = countries.slice(startFromIndex); // Get countries from Afghanistan onward
+
+            // Sort countries alphabetically
+            filteredCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+            filteredCountries.forEach(country => {
+                const callingCode = country.idd && country.idd.root && country.idd.suffixes 
+                    ? `${country.idd.root}${country.idd.suffixes[0]}` 
+                    : 'N/A'; // Default to 'N/A' if no calling code available
+
+                const li = document.createElement('li');
+                li.className = 'flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100';
+                li.onclick = () => selectCountry(country.name.common, country.flags.png, callingCode);
+
+                const flagImg = document.createElement('img');
+                flagImg.src = country.flags.png;
+                flagImg.className = 'w-5 h-5 mr-2';
+                flagImg.alt = `${country.name.common} Flag`;
+
+                const countryText = document.createTextNode(` ${country.name.common} (${callingCode})`);
+
+                li.appendChild(flagImg);
+                li.appendChild(countryText);
+
+                countryOptions.appendChild(li);
+            });
+        }
+
+        function selectCountry(name, flag, code) {
+            document.getElementById('selectedFlag').src = flag;
+            document.getElementById('selectedCountryCode').textContent = code; // Update code display
+            toggleCountryOptions(); // Hide dropdown after selection
+        }
+
+        function toggleCountryOptions() {
+            const options = document.getElementById('countryOptions');
+            options.classList.toggle('hidden');
+        }
+
+        function filterCountries() {
+            const input = document.getElementById('countryInput').value.toLowerCase(); // Assuming you have an input with id 'countryInput'
+            const options = document.getElementById('countryOptions');
+            const liItems = options.getElementsByTagName('li');
+
+            Array.from(liItems).forEach(li => {
+                const countryName = li.textContent.toLowerCase();
+                li.style.display = countryName.includes(input) ? '' : 'none'; // Show or hide based on search input
+            });
+        }
+
+        window.onload = initCountryDropdown;
+
+
+
+
+    </script>
+</body>
+</html>
