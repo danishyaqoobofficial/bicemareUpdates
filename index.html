@@ -237,7 +237,7 @@
                                     <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Last Name" name="" id="">
                                     
                                     <div class="flex p-1.5 border border-[#D2D2D2] rounded-md w-full flex-1 relative">
-                                        <div id="countryDropdown" class="max-w-[120px] w-full flex items-center justify-between relative z-50 cursor-pointer" onclick="toggleCountryOptions()">
+                                        <div class="max-w-[120px] w-full flex items-center justify-between relative z-0 cursor-pointer">
                                             <div class="w-full flex items-center justify-between relative !z-0">
                                                 <div class="flex items-center font-sans gap-1 relative !z-0">
                                                     <img src="https://flagcdn.com/w20/us.png" id="selectedFlag" class="h-5 object-cover" alt="US Flag">
@@ -247,6 +247,7 @@
                                                     <path d="M7.79079 8.00017L16.2108 8.00017C16.5432 7.99969 16.869 8.09336 17.1503 8.27033C17.4317 8.44731 17.6572 8.70035 17.8008 9.00017C17.9688 9.35592 18.0335 9.75171 17.9876 10.1424C17.9416 10.5332 17.7868 10.9031 17.5408 11.2102L13.3308 16.3102C13.1656 16.5008 12.9613 16.6537 12.7318 16.7585C12.5024 16.8633 12.253 16.9175 12.0008 16.9175C11.7485 16.9175 11.4992 16.8633 11.2697 16.7585C11.0403 16.6537 10.836 16.5008 10.6708 16.3102L6.46078 11.2102C6.21478 10.9031 6.05997 10.5332 6.014 10.1424C5.96803 9.75171 6.03275 9.35592 6.20079 9.00017C6.34433 8.70035 6.56984 8.44731 6.85123 8.27033C7.13262 8.09336 7.45837 7.99969 7.79079 8.00017Z" fill="#797979"/>
                                                 </svg>
                                             </div>
+                                            <div class="absolute inset-0 w-full h-full z-50" id="countryDropdown" onclick="toggleCountryOptions()"></div>
                                         </div>
                                         <ul id="countryOptions" class="absolute left-0 top-[34px] w-full mt-2 bg-[#fff] max-w-[249px] rounded-lg shadow-lg hidden z-50 max-h-[240px] overflow-y-auto font-sans">
 
