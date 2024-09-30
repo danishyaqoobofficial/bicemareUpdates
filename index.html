@@ -44,12 +44,12 @@
                             <div class="p-[5px] flex gap-2 bg-[#fff] rounded-lg">
                                 <div
                                     id="FATBtn"
-                                    class="flex items-center justify-center px-7 py-2 bg-[#E50512] hover:custom_shadow transition-all rounded-lg text-[#fff] cursor-pointer whitespace-nowrap">
+                                    class="flex items-center select-none justify-center px-7 py-2 bg-[#E50512] hover:custom_shadow transition-all rounded-lg text-[#fff] cursor-pointer whitespace-nowrap">
                                     Find a Table
                                 </div>
                                 <div
                                     id="YTBtn"
-                                    class="flex items-center justify-center px-7 py-2 hover:bg-secondry text-[#797979] hover:custom_shadow transition-all rounded-lg cursor-not-allowed whitespace-nowrap">
+                                    class="flex items-center select-none justify-center px-7 py-2 hover:bg-secondry text-[#797979] hover:custom_shadow transition-all rounded-lg cursor-not-allowed whitespace-nowrap">
                                     Your Detail
                                 </div>
                             </div>
@@ -767,7 +767,7 @@
                 if (index > 0) { // Skip the search input
                     const countryName = li.textContent.toLowerCase();
                     li.style.display = countryName.includes(input) ? '' : 'none';
-                }
+                } select-none
             });
         }
 
