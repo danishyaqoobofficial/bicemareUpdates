@@ -29,7 +29,7 @@
 
 
 
-    <section class="" id="reservation_popup_main">
+    <section class="hidden" id="reservation_popup_main">
         <div class="w-full absolute z-50 top-0">
             <div class="overflow-y-auto bg-[#fff]">
                 <div class="" id="clise_at_last">
@@ -357,18 +357,16 @@
                             <p class="text-[#797979] font-sans md:text-lg">Certain U.S. consumers may have additional data rights, which can be exercised by clicking <span class="text-[#E50512]">Do Not Sell or Share My Personal Information </span></p>
                         </div>
     
-
-
-
-
                         <div class="w-full bg-[#FDEBEC] px-3 md:px-6 py-3 md:py-4 md:text-lg rounded-lg text-[#797979] font-sans z-30 relative " id="error_message">
                             Unfortunately, your party is <span class="text-[#000]">too large</span> to make an online reservation at BICE Mare Dubai. We recommend Contacting the restaurant directly.
                         </div>
                     </div>
-
-
-
                 </div>
+
+
+
+
+
                 <div id="confirmationMessage" class="hidden px-6 py-12">
                     <img src="./img/lastPopup.png" class="mx-auto" alt="">
                     <div>
@@ -537,105 +535,49 @@
             const buttons = document.querySelectorAll('#timeSlots button');
             buttons.forEach(button => {
                 button.classList.remove('!bg-red-600', '!text-white');
-                // button.classList.add('!bg-[#FDEBEC]'); 
             });
             event.target.classList.add('!bg-red-600', '!text-white');
         }
 
         function goToNextSection() {
-    let details_section = document.getElementById('details_section');
-    details_section.classList.toggle('hidden');
-    const selectedDate = document.getElementById('dateInput').value;
+            let details_section = document.getElementById('details_section');
+            details_section.classList.toggle('hidden');
+            const selectedDate = document.getElementById('dateInput').value;
 
-    document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
-    document.getElementById('confirmTime').textContent = result.time || 'Not Selected';
-    document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
-    document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
+            document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
+            document.getElementById('confirmTime').textContent = result.time || 'Not Selected';
+            document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
+            document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
 
-    if (result.seating === 'Indoor') {
-        document.getElementById('confirmRow').textContent = 'N/A';
-    } else {
-        document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
-    }
+            if (result.seating === 'Indoor') {
+                document.getElementById('confirmRow').textContent = 'N/A';
+            } else {
+                document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
+            }
 
-    const inputs_grid = document.getElementById('inputs_grid');
-    let timeSlots = document.getElementById('timeSlots');
-    let error_message = document.getElementById('error_message');
-    let position_image1 = document.querySelector('.position_image1');
-    let position_image2 = document.querySelector('.position_image2');
-    let radiobtnMain = document.getElementById("radioBtns");
+            const inputs_grid = document.getElementById('inputs_grid');
+            let timeSlots = document.getElementById('timeSlots');
+            let error_message = document.getElementById('error_message');
+            let position_image1 = document.querySelector('.position_image1');
+            let position_image2 = document.querySelector('.position_image2');
+            let radiobtnMain = document.getElementById("radioBtns");
 
-    const fatBtn = document.getElementById('FATBtn');
-    const ytBtn = document.getElementById('YTBtn');
+            const fatBtn = document.getElementById('FATBtn');
+            const ytBtn = document.getElementById('YTBtn');
 
-    fatBtn.classList.remove('bg-[#E50512]');
-    fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
+            fatBtn.classList.remove('bg-[#E50512]');
+            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
 
-    ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
-    ytBtn.classList.remove('cursor-not-allowed');
+            ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
+            ytBtn.classList.remove('cursor-not-allowed');
 
-    inputs_grid.classList.add('hidden');
-    timeSlots.classList.add('!hidden');
-    error_message.classList.add('hidden');
-    position_image1.classList.add('top-[30%]', 'h-[200px]');
-    position_image2.classList.add('bottom-[20%]', 'h-[290px]');
-    radiobtnMain.classList.add('hidden');
-}
-
-
-
-// function setOtherDetails() {
-//     const selectedDate = document.getElementById('dateInput').value;
-
-//     document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
-//     document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
-//     document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
-//     document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
-
-//     const inputs_grid = document.getElementById('inputs_grid');
-//     let timeSlots = document.getElementById('timeSlots');
-//     let error_message = document.getElementById('error_message');
-//     let position_image1 = document.querySelector('.position_image1');
-//     let position_image2 = document.querySelector('.position_image2');
-//     let radiobtnMain = document.getElementById("radioBtns");
-
-//     const fatBtn = document.getElementById('FATBtn');
-//     const ytBtn = document.getElementById('YTBtn');
-
-//     console.log('Before:', fatBtn.classList, ytBtn.classList);
-
-//     fatBtn.classList.remove('bg-[#E50512]');
-//     fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
-
-//     ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]');
-
-//     inputs_grid.classList.add('hidden');
-//     timeSlots.classList.add('hidden');
-//     error_message.classList.add('hidden');
-//     position_image1.classList.add('bottom-[76%]', 'h-[200px]');
-//     position_image2.classList.add('bottom-[20%]', 'h-[290px]');
-//     radiobtnMain.classList.add('hidden');
-// }
-
-// document.getElementById('FATBtn').addEventListener('click', setOtherDetails);
-
-
-
-        // setOtherDetails();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            inputs_grid.classList.add('hidden');
+            timeSlots.classList.add('!hidden');
+            error_message.classList.add('hidden');
+            position_image1.classList.add('top-[30%]', 'h-[200px]');
+            position_image2.classList.add('bottom-[20%]', 'h-[290px]');
+            radiobtnMain.classList.add('hidden');
+        }
 
 
 
@@ -692,95 +634,94 @@
 
 
         async function fetchCountries() {
-        const response = await fetch('https://restcountries.com/v3.1/all');
-        const countries = await response.json();
-        return countries;
-    }
-
-    async function initCountryDropdown() {
-        const countries = await fetchCountries();
-        const countryOptions = document.getElementById('countryOptions');
-
-        // Create search input dynamically
-        const searchInput = document.createElement('li');
-        searchInput.innerHTML = `
-            <input type="text" id="countrySearch" placeholder="Search country..." class="w-full p-2 border border-[#D2D2D2] rounded-md outline-none" onkeyup="filterCountries()">
-        `;
-        countryOptions.appendChild(searchInput);
-
-        countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
-
-        countries.forEach(country => {
-            const callingCode = country.idd && country.idd.root && country.idd.suffixes 
-                ? `${country.idd.root}${country.idd.suffixes[0]}` 
-                : 'N/A';
-
-            const li = document.createElement('li');
-            li.className = 'flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100';
-            li.onclick = () => selectCountry(country.name.common, country.flags.png, callingCode);
-
-            const flagImg = document.createElement('img');
-            flagImg.src = country.flags.png;
-            flagImg.className = 'w-5 h-5 mr-2';
-            flagImg.alt = `${country.name.common} Flag`;
-
-            const countryText = document.createTextNode(` ${country.name.common} (${callingCode})`);
-
-            li.appendChild(flagImg);
-            li.appendChild(countryText);
-
-            countryOptions.appendChild(li);
-        });
-
-        const uaeCountry = countries.find(country => country.name.common === "United Arab Emirates");
-        if (uaeCountry) {
-            const callingCode = uaeCountry.idd && uaeCountry.idd.root && uaeCountry.idd.suffixes 
-                ? `${uaeCountry.idd.root}${uaeCountry.idd.suffixes[0]}` 
-                : 'N/A';
-            selectCountry(uaeCountry.name.common, uaeCountry.flags.png, callingCode);
+            const response = await fetch('https://restcountries.com/v3.1/all');
+            const countries = await response.json();
+            return countries;
         }
 
-        countryOptions.classList.add('hidden');
-    }
+        async function initCountryDropdown() {
+            const countries = await fetchCountries();
+            const countryOptions = document.getElementById('countryOptions');
 
-    function selectCountry(name, flag, code) {
-        document.getElementById('selectedFlag').src = flag;
-        document.getElementById('selectedCountryCode').textContent = code;
-        toggleCountryOptions();
-    }
+            const searchInput = document.createElement('li');
+            searchInput.innerHTML = `
+                <input type="text" id="countrySearch" placeholder="Search country..." class="w-full p-2 border border-[#D2D2D2] rounded-md outline-none" onkeyup="filterCountries()">
+            `;
+            countryOptions.appendChild(searchInput);
 
-    function toggleCountryOptions() {
-        const options = document.getElementById('countryOptions');
-        options.classList.toggle('hidden');
-    }
+            countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
 
-    document.addEventListener('click', function (e) {
-        const dropdown = document.getElementById('countryOptions');
-        const inputField = document.getElementById('countryDropdown');
+            countries.forEach(country => {
+                const callingCode = country.idd && country.idd.root && country.idd.suffixes 
+                    ? `${country.idd.root}${country.idd.suffixes[0]}` 
+                    : 'N/A';
 
-        if (!dropdown.contains(e.target) && e.target !== inputField) {
-            dropdown.classList.add('hidden');
+                const li = document.createElement('li');
+                li.className = 'flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100';
+                li.onclick = () => selectCountry(country.name.common, country.flags.png, callingCode);
+
+                const flagImg = document.createElement('img');
+                flagImg.src = country.flags.png;
+                flagImg.className = 'w-5 h-5 mr-2';
+                flagImg.alt = `${country.name.common} Flag`;
+
+                const countryText = document.createTextNode(` ${country.name.common} (${callingCode})`);
+
+                li.appendChild(flagImg);
+                li.appendChild(countryText);
+
+                countryOptions.appendChild(li);
+            });
+
+            const uaeCountry = countries.find(country => country.name.common === "United Arab Emirates");
+            if (uaeCountry) {
+                const callingCode = uaeCountry.idd && uaeCountry.idd.root && uaeCountry.idd.suffixes 
+                    ? `${uaeCountry.idd.root}${uaeCountry.idd.suffixes[0]}` 
+                    : 'N/A';
+                selectCountry(uaeCountry.name.common, uaeCountry.flags.png, callingCode);
+            }
+
+            countryOptions.classList.add('hidden');
         }
-    });
 
-    function filterCountries() {
-        const input = document.getElementById('countrySearch').value.toLowerCase();
-        const options = document.getElementById('countryOptions');
-        const liItems = options.getElementsByTagName('li');
+        function selectCountry(name, flag, code) {
+            document.getElementById('selectedFlag').src = flag;
+            document.getElementById('selectedCountryCode').textContent = code;
+            toggleCountryOptions();
+        }
 
-        Array.from(liItems).forEach((li, index) => {
-            if (index > 0) { // Skip the search input
-                const countryName = li.textContent.toLowerCase();
-                li.style.display = countryName.includes(input) ? '' : 'none';
+        function toggleCountryOptions() {
+            const options = document.getElementById('countryOptions');
+            options.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function (e) {
+            const dropdown = document.getElementById('countryOptions');
+            const inputField = document.getElementById('countryDropdown');
+
+            if (!dropdown.contains(e.target) && e.target !== inputField) {
+                dropdown.classList.add('hidden');
             }
         });
-    }
 
-    document.getElementById('phoneNumber').addEventListener('input', function(e) {
-        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 14);
-    });
+        function filterCountries() {
+            const input = document.getElementById('countrySearch').value.toLowerCase();
+            const options = document.getElementById('countryOptions');
+            const liItems = options.getElementsByTagName('li');
 
-    window.onload = initCountryDropdown;
+            Array.from(liItems).forEach((li, index) => {
+                if (index > 0) {
+                    const countryName = li.textContent.toLowerCase();
+                    li.style.display = countryName.includes(input) ? '' : 'none';
+                }
+            });
+        }
+
+        document.getElementById('phoneNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 14);
+        });
+
+        window.onload = initCountryDropdown;
 
 
 
