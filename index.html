@@ -93,6 +93,26 @@
                                         </div>
                                         <div class="relative">
                                             <div class="relative h-full">
+                                                <button id="seatingDropdown"
+                                                    class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
+                                                    Seating
+                                                </button>
+                                                <svg class="absolute h-full z-0 right-2 top-0 h-7 w-7" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979" />
+                                                </svg>
+                                            </div>
+                                            <ul id="seatingOptions"
+                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Indoor')">
+                                                    Indoor
+                                                </li>
+                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Terrace')">
+                                                    Terrace
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="relative">
+                                            <div class="relative h-full">
                                                 <button id="timeDropdown"
                                                     class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
                                                     Time
@@ -117,26 +137,6 @@
                                                 </li>
                                             </ul>
                                         </div>    
-                                        <div class="relative">
-                                            <div class="relative h-full">
-                                                <button id="seatingDropdown"
-                                                    class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
-                                                    Seating
-                                                </button>
-                                                <svg class="absolute h-full z-0 right-2 top-0 h-7 w-7" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979" />
-                                                </svg>
-                                            </div>
-                                            <ul id="seatingOptions"
-                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Indoor')">
-                                                    Indoor
-                                                </li>
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Terrace')">
-                                                    Terrace
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
 
                                     <div class="hidden mt-4 z-30 relative" id="radioBtns">
@@ -173,23 +173,23 @@
     
                                     <div id="timeSlots" class="hidden mt-4 z-30 relative">
                                         <div class="grid grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 flex-wrap mt-7">
-                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
                                                 onclick="selectTimeSlot('6:30 PM')">
                                                 6:30 PM
                                             </button>
-                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
                                                 onclick="selectTimeSlot('7:00 PM')">
                                                 7:00 PM
                                             </button>
-                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
                                                 onclick="selectTimeSlot('7:30 PM')">
                                                 7:30 PM
                                             </button>
-                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
                                                 onclick="selectTimeSlot('8:00 PM')">
                                                 8:00 PM
                                             </button>
-                                            <button class="bg-red-600 text-white py-2 w-full rounded-md bg-[#E50512] flex items-center justify-center cursor-pointer font-sans text-[#fff]"
+                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
                                                 onclick="selectTimeSlot('8:30 PM')">
                                                 8:30 PM
                                             </button>
@@ -236,22 +236,18 @@
                                     <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="First Name" name="" id="">
                                     <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Last Name" name="" id="">
                                     
-                                    <div class="flex p-1.5 border border-[#D2D2D2] rounded-md w-full flex-1 relative z-50">
+                                    <div class="flex p-1.5 border border-[#D2D2D2] rounded-md w-full flex-1 relative">
                                         <div id="countryDropdown" class="max-w-[120px] w-full flex items-center justify-between relative z-50" onclick="toggleCountryOptions()">
-                                            <div id="countryDropdown" onclick="toggleCountryOptions()" class="flex cursor-pointer items-center justify-between w-full px-2 gap-1 z-0 relative" >
-                                                <div class="flex items-center font-sans gap-1">
-                                                    <img src="https://flagcdn.com/w20/us.png" id="selectedFlag" class="h-5 object-cover " alt="US Flag">
-                                                    <span id="selectedCountryCode">+1</span>
-                                                </div>
-                                                <svg class="w-4 h-4 text-gray-500" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.79079 8.00017L16.2108 8.00017C16.5432 7.99969 16.869 8.09336 17.1503 8.27033C17.4317 8.44731 17.6572 8.70035 17.8008 9.00017C17.9688 9.35592 18.0335 9.75171 17.9876 10.1424C17.9416 10.5332 17.7868 10.9031 17.5408 11.2102L13.3308 16.3102C13.1656 16.5008 12.9613 16.6537 12.7318 16.7585C12.5024 16.8633 12.253 16.9175 12.0008 16.9175C11.7485 16.9175 11.4992 16.8633 11.2697 16.7585C11.0403 16.6537 10.836 16.5008 10.6708 16.3102L6.46078 11.2102C6.21478 10.9031 6.05997 10.5332 6.014 10.1424C5.96803 9.75171 6.03275 9.35592 6.20079 9.00017C6.34433 8.70035 6.56984 8.44731 6.85123 8.27033C7.13262 8.09336 7.45837 7.99969 7.79079 8.00017Z" fill="#797979"/>
-                                                </svg>
+                                            <div class="flex items-center font-sans gap-1 relative !z-0">
+                                                <img src="https://flagcdn.com/w20/us.png" id="selectedFlag" class="h-5 object-cover " alt="US Flag">
+                                                <span id="selectedCountryCode">+1</span>
                                             </div>
+                                            <svg class="w-4 h-4 text-gray-500 relative !z-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.79079 8.00017L16.2108 8.00017C16.5432 7.99969 16.869 8.09336 17.1503 8.27033C17.4317 8.44731 17.6572 8.70035 17.8008 9.00017C17.9688 9.35592 18.0335 9.75171 17.9876 10.1424C17.9416 10.5332 17.7868 10.9031 17.5408 11.2102L13.3308 16.3102C13.1656 16.5008 12.9613 16.6537 12.7318 16.7585C12.5024 16.8633 12.253 16.9175 12.0008 16.9175C11.7485 16.9175 11.4992 16.8633 11.2697 16.7585C11.0403 16.6537 10.836 16.5008 10.6708 16.3102L6.46078 11.2102C6.21478 10.9031 6.05997 10.5332 6.014 10.1424C5.96803 9.75171 6.03275 9.35592 6.20079 9.00017C6.34433 8.70035 6.56984 8.44731 6.85123 8.27033C7.13262 8.09336 7.45837 7.99969 7.79079 8.00017Z" fill="#797979"/>
+                                            </svg>
                                         </div>
                                         <ul id="countryOptions" class="absolute left-0 top-[34px] w-full mt-2 bg-[#fff] max-w-[249px] rounded-lg shadow-lg hidden z-50 max-h-[240px] overflow-y-auto font-sans">
-                                            <li>
-                                                <input type="text" id="countrySearch" placeholder="Search country..." class="w-full p-2 border border-[#D2D2D2] rounded-md outline-none" onkeyup="filterCountries()">
-                                            </li>
+                                            <input type="text" id="countrySearch" placeholder="Search country..." class="w-full p-2 border border-[#D2D2D2] rounded-md outline-[0px]" onkeyup="filterCountries()">
                                         </ul>
                                         <input type="number" minlength="1" max="14" class="border-l border-[#D2D2D2] flex-1 px-4 py-1 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Phone Number" name="" id="phoneNumber">
                                     </div>
@@ -536,46 +532,53 @@
 
             const buttons = document.querySelectorAll('#timeSlots button');
             buttons.forEach(button => {
-                button.classList.remove('!bg-[#FDEBEC]', '!text-[#797979]');
+                button.classList.remove('!bg-red-600', '!text-white');
                 // button.classList.add('!bg-[#FDEBEC]'); 
             });
-            event.target.classList.add('!bg-[#FDEBEC]', '!text-[#797979]');
+            event.target.classList.add('!bg-red-600', '!text-white');
         }
 
         function goToNextSection() {
-            let details_section = document.getElementById('details_section');
-            details_section.classList.toggle('hidden');
-            const selectedDate = document.getElementById('dateInput').value;
+    let details_section = document.getElementById('details_section');
+    details_section.classList.toggle('hidden');
+    const selectedDate = document.getElementById('dateInput').value;
 
-            document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
-            document.getElementById('confirmTime').textContent = result.time || 'Not Selected'; // Change this line
-            document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
-            document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
-            document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A';
+    document.getElementById('confirmPeople').textContent = result.people || 'Not Selected';
+    document.getElementById('confirmTime').textContent = result.time || 'Not Selected'; // Change this line
+    document.getElementById('confirmDate').textContent = selectedDate || 'Not Selected';
+    document.getElementById('confirmSeating').textContent = result.seating || 'Not Selected';
 
-            const inputs_grid = document.getElementById('inputs_grid');
-            let timeSlots = document.getElementById('timeSlots');
-            let error_message = document.getElementById('error_message');
-            let position_image1 = document.querySelector('.position_image1');
-            let position_image2 = document.querySelector('.position_image2');
-            let radiobtnMain = document.getElementById("radioBtns");
+    // Check if the user selected "Indoor" seating
+    if (result.seating === 'Indoor') {
+        document.getElementById('confirmRow').textContent = 'N/A'; // Always show 'N/A' for Indoor
+    } else {
+        document.getElementById('confirmRow').textContent = result.rowPreference || 'N/A'; // Show the selected row preference or 'N/A'
+    }
 
-            const fatBtn = document.getElementById('FATBtn');
-            const ytBtn = document.getElementById('YTBtn');
+    const inputs_grid = document.getElementById('inputs_grid');
+    let timeSlots = document.getElementById('timeSlots');
+    let error_message = document.getElementById('error_message');
+    let position_image1 = document.querySelector('.position_image1');
+    let position_image2 = document.querySelector('.position_image2');
+    let radiobtnMain = document.getElementById("radioBtns");
 
-            fatBtn.classList.remove('bg-[#E50512]');
-            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
+    const fatBtn = document.getElementById('FATBtn');
+    const ytBtn = document.getElementById('YTBtn');
 
-            ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
-            ytBtn.classList.remove('cursor-not-allowed');
+    fatBtn.classList.remove('bg-[#E50512]');
+    fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
 
-            inputs_grid.classList.add('hidden');
-            timeSlots.classList.add('!hidden');
-            error_message.classList.add('hidden');
-            position_image1.classList.add('bottom-[76%]', 'h-[200px]');
-            position_image2.classList.add('bottom-[20%]', 'h-[290px]');
-            radiobtnMain.classList.add('hidden');
-        }
+    ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
+    ytBtn.classList.remove('cursor-not-allowed');
+
+    inputs_grid.classList.add('hidden');
+    timeSlots.classList.add('!hidden');
+    error_message.classList.add('hidden');
+    position_image1.classList.add('top-[30%]', 'h-[200px]');
+    position_image2.classList.add('bottom-[20%]', 'h-[290px]');
+    radiobtnMain.classList.add('hidden');
+}
+
 
 
 // function setOtherDetails() {
