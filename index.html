@@ -20,6 +20,8 @@
 </head>
 <body>
 
+    <!-- Reservation Button -->
+
     <section class="flex items-center justify-center h-[100vh] w-full">
         <div onclick="reservation_popup()"
             class="border max-w-max border-[#E50512] transition-all hover:bg-[#E50512] hover:text-[#fff] tracking-wide flex items-center justify-center rounded-lg text-theme_black px-[17px] text-lg py-[7px] cursor-pointer">
@@ -27,12 +29,12 @@
         </div>
     </section>
 
-
+    <!-- Reservation Popup -->
 
     <section class="hidden" id="reservation_popup_main">
         <div class="w-full absolute z-50 top-0">
             <div class="overflow-y-auto bg-[#fff]">
-                <div class="" id="clise_at_last">
+                <div id="reservation_main_detail">
                     <div class="px-5 md:px-8 lg:px-14 py-4 md:py-5 lg:py-9 space-y-8 max-w-[1200px] w-full mx-auto">
                         <div class="flex items-center justify-between">
                             <p class="text-[#E50512] text-xl md:text-2xl ">Sign In</p>
@@ -249,7 +251,7 @@
                                             </div>
                                             <div class="absolute inset-0 w-full h-full z-50" id="countryDropdown" onclick="toggleCountryOptions()"></div>
                                         </div>
-                                        <ul id="countryOptions" class="absolute left-0 top-[34px] w-full mt-2 bg-[#fff] max-w-[249px] rounded-lg shadow-lg hidden z-50 max-h-[240px] overflow-y-auto font-sans">
+                                        <ul id="countryOptions" class="absolute left-0 top-[34px] w-full mt-2 bg-[#fff] max-w-[249px] rounded-lg shadow-lg hidden z-[100000000000] max-h-[240px] overflow-y-auto font-sans">
 
                                         </ul>
                                         <input type="number" minlength="1" max="14" class="border-l border-[#D2D2D2] flex-1 px-4 py-1 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Phone Number" id="phoneNumber">
@@ -605,7 +607,7 @@
 
             if (firstName && lastName && emailRegex.test(email) &&
                 selectedPeople !== 'People' && selectedTime !== 'Time' && selectedSeating !== 'Seating') {
-                document.getElementById('clise_at_last').classList.add('hidden');
+                document.getElementById('reservation_main_detail').classList.add('hidden');
                 document.getElementById('confirmationMessage').classList.remove('hidden');
             } else {
                 alert('Please fill in all required fields and make all selections before confirming.');
