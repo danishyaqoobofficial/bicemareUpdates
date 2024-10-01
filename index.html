@@ -540,38 +540,48 @@
         // Form Validation and get data in console
 
 
-
         function confirmReservation(event) {
             event.preventDefault();
             
             const firstName = document.querySelector('input[placeholder="First Name"]').value.trim();
             const lastName = document.querySelector('input[placeholder="Last Name"]').value.trim();
             const email = document.querySelector('input[type="email"]').value.trim();
+            const phoneNumber = document.querySelector('#phoneNumber').value.trim();
 
             const selectedPeople = document.querySelector('#peopleDropdown').textContent.trim();
             const selectedTime = document.querySelector('#timeDropdown').textContent.trim();
             const selectedSeating = document.querySelector('#seatingDropdown').textContent.trim();
             
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^\d{7,14}$/;
 
             console.log("First Name:", firstName);
             console.log("Last Name:", lastName);
             console.log("Email:", email);
+            console.log("Phone Number:", phoneNumber);
             console.log("Selected People:", selectedPeople);
             console.log("Selected Time:", selectedTime);
             console.log("Selected Seating:", selectedSeating);
 
-            if (firstName && lastName && emailRegex.test(email) &&
-                selectedPeople !== 'People' && selectedTime !== 'Time' && selectedSeating !== 'Seating') {
+            let errorMessage = '';
+
+            if (!firstName || !lastName || selectedPeople === 'People' || selectedTime === 'Time' || selectedSeating === 'Seating') {
+                errorMessage += 'Please fill in all required fields and make all selections.\n';
+            }
+
+            if (!emailRegex.test(email)) {
+                errorMessage += 'Please enter a valid email address.\n';
+            }
+
+            if (!phoneRegex.test(phoneNumber)) {
+                errorMessage += 'Please enter a valid phone number (7 to 14 digits).\n';
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+            } else {
                 document.getElementById('reservation_main_detail').classList.add('hidden');
                 document.getElementById('confirmationMessage').classList.remove('hidden');
-            } else {
-                alert('Please fill in all required fields and make all selections before confirming.');
-            }
-            
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
             }
         }
 
@@ -668,7 +678,7 @@
         });
         window.onload = initCountryDropdown;
 
-        
+
     </script>
 </body>
 </html>
