@@ -31,7 +31,7 @@
 
     <!-- Reservation Popup -->
 
-    <section class="hidden" id="reservation_popup_main">
+    <section class="" id="reservation_popup_main">
         <div class="w-full absolute z-50 top-0">
             <div class="overflow-y-auto bg-[#fff]">
                 <div id="reservation_main_detail">
@@ -47,6 +47,12 @@
                                 <div
                                     id="FATBtn"
                                     class="flex items-center select-none justify-center px-7 py-2 bg-[#E50512] hover:custom_shadow transition-all rounded-lg text-[#fff] cursor-pointer whitespace-nowrap">
+                                    Find a Table
+                                </div>
+                                <div
+                                    onclick="hiddenbutton()"
+                                    id="hiddenbutton"
+                                    class="flex hidden items-center select-none justify-center px-7 py-2 hover:custom_shadow transition-all rounded-lg text-[#797979] cursor-pointer whitespace-nowrap">
                                     Find a Table
                                 </div>
                                 <div
@@ -518,12 +524,13 @@
             let position_image1 = document.querySelector('.position_image1');
             let position_image2 = document.querySelector('.position_image2');
             let radiobtnMain = document.getElementById("radioBtns");
+            let hiddenbutton = document.getElementById('hiddenbutton');
 
             const fatBtn = document.getElementById('FATBtn');
             const ytBtn = document.getElementById('YTBtn');
 
             fatBtn.classList.remove('bg-[#E50512]');
-            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]');
+            fatBtn.classList.add('!hover:bg-secondry', '!text-[#797979]' , 'hidden');
 
             ytBtn.classList.add('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
             ytBtn.classList.remove('cursor-not-allowed');
@@ -534,6 +541,42 @@
             position_image1.classList.add('top-[30%]', 'h-[200px]');
             position_image2.classList.add('bottom-[20%]', 'h-[290px]');
             radiobtnMain.classList.add('hidden');
+            hiddenbutton.classList.remove('hidden');
+        }
+    
+
+        function hiddenbutton() {
+            let reservationPopup = document.getElementById('reservationPopup');
+            let hiddenbutton = document.getElementById('hiddenbutton');
+            const fatBtn = document.getElementById('FATBtn');
+            let details_section = document.getElementById('details_section');
+            
+            details_section.classList.toggle('hidden');
+
+            fatBtn.classList.remove('hidden');
+            hiddenbutton.classList.add('hidden');
+
+            const inputs_grid = document.getElementById('inputs_grid');
+            let timeSlots = document.getElementById('timeSlots');
+            let error_message = document.getElementById('error_message');
+            let position_image1 = document.querySelector('.position_image1');
+            let position_image2 = document.querySelector('.position_image2');
+            let radiobtnMain = document.getElementById("radioBtns");
+
+            const ytBtn = document.getElementById('YTBtn');
+
+            fatBtn.classList.add('bg-[#E50512]');
+            fatBtn.classList.remove('!hover:bg-secondry', '!text-[#797979]', 'hidden');
+
+            ytBtn.classList.remove('!bg-[#E50512]', '!text-[#fff]', '!cursor-pointer');
+            ytBtn.classList.add('cursor-not-allowed');
+
+            inputs_grid.classList.remove('hidden');
+            timeSlots.classList.remove('!hidden');
+            error_message.classList.remove('hidden');
+            position_image1.classList.remove('top-[30%]', 'h-[200px]');
+            position_image2.classList.remove('bottom-[20%]', 'h-[290px]');
+            radiobtnMain.classList.remove('hidden');
         }
 
 
