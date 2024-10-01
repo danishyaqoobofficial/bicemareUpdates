@@ -63,146 +63,142 @@
                         <div class=""
                             id="reservationPopup">
                             <div id="inputForm">
-                                    <div class="grid grid-cols-2 md:grid-cols-4 border border-[#D2D2D2] divide-x divide-[#D2D2D2] rounded-lg devider-x" id="inputs_grid">
-                                        <div class="relative ">
-                                            <div class="relative h-full">
-                                                <button id="peopleDropdown"
-                                                    class="w-full relative z-30 text-[#797979] font-sans border-b border-[#D2D2D2] md:border-0 py-2 px-3 flex items-center justify-between text-left h-full">
-                                                    People
-                                                </button>
-                                                <svg class="absolute h-full z-0 right-2 top-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979"/>
-                                                </svg>                                                        
-                                            </div>
-                                            <ul id="peopleOptions"
-                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
-                                                <li class="cursor-pointer py-2 px-3 transition-all hover:bg-[#797979]/30"
-                                                    onclick="selectOption('people', '2 People')">
-                                                    2 People
-                                                </li>
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
-                                                    onclick="selectOption('people', '4 People')">
-                                                    4 People
-                                                </li>
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
-                                                    onclick="selectOption('people', '6 People')">
-                                                    6 People
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="">
-                                            <input type="date" id="dateInput" onblur="" onfocus="" class="w-full relative z-30 py-2 px-3 text-[#797979] font-sans outline-none border-b border-[#D2D2D2] md:border-0 rounded-tr-lg md:rounded-0" inputmode="numeric" />
-                                        </div>
-                                        <div class="relative">
-                                            <div class="relative h-full">
-                                                <button id="seatingDropdown"
-                                                    class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
-                                                    Seating
-                                                </button>
-                                                <svg class="absolute h-full z-0 right-2 top-0 h-7 w-7" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979" />
-                                                </svg>
-                                            </div>
-                                            <ul id="seatingOptions"
-                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Indoor')">
-                                                    Indoor
-                                                </li>
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Terrace')">
-                                                    Terrace
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="relative">
-                                            <div class="relative h-full">
-                                                <button id="timeDropdown"
-                                                    class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
-                                                    Time
-                                                </button>
-                                                <svg class="absolute h-full z-0 right-2 top-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979"/>
-                                                </svg>    
-                                            </div>
-                                            <ul id="timeOptions"
-                                                class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto ">
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
-                                                    onclick="selectOption('time', '6:00 PM')">
-                                                    6:00 PM
-                                                </li>
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
-                                                    onclick="selectOption('time', '7:00 PM')">
-                                                    7:00 PM
-                                                </li>
-                                                <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
-                                                    onclick="selectOption('time', '8:00 PM')">
-                                                    8:00 PM
-                                                </li>
-                                            </ul>
-                                        </div>    
-                                    </div>
-
-                                    <div class="hidden mt-4 z-30 relative" id="radioBtns">
-                                        <div class="flex gap-6 flex-wrap">
-                                            <div class="flex items-center space-x-2">
-                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
-                                                    <input type="radio" id="no-preference" name="row" value="No Preference" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
-                                                </span>
-                                                <label for="no-preference" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">No Preference</label>
-                                            </div>
-                                    
-                                            <div class="flex items-center space-x-2">
-                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
-                                                    <input type="radio" id="first-row" name="row" value="First Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
-                                                </span>
-                                                <label for="first-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">First Row</label>
-                                            </div>
-                                    
-                                            <div class="flex items-center space-x-2">
-                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
-                                                    <input type="radio" id="second-row" name="row" value="Second Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
-                                                </span>
-                                                <label for="second-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">Second Row</label>
-                                            </div>
-                                    
-                                            <div class="flex items-center space-x-2">
-                                                <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
-                                                    <input type="radio" id="last-row" name="row" value="Last Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
-                                                </span>
-                                                <label for="last-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">Last Row</label>
-                                            </div>
-                                        </div>
-                                    </div>   
-    
-                                    <div id="timeSlots" class="hidden mt-4 z-30 relative">
-                                        <div class="grid grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 flex-wrap mt-7">
-                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
-                                                onclick="selectTimeSlot('6:30 PM')">
-                                                6:30 PM
+                                <div class="grid grid-cols-2 md:grid-cols-4 border border-[#D2D2D2] divide-x divide-[#D2D2D2] rounded-lg devider-x" id="inputs_grid">
+                                    <div class="relative ">
+                                        <div class="relative h-full">
+                                            <button id="peopleDropdown"
+                                                class="w-full relative z-30 text-[#797979] font-sans border-b border-[#D2D2D2] md:border-0 py-2 px-3 flex items-center justify-between text-left h-full">
+                                                People
                                             </button>
-                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
-                                                onclick="selectTimeSlot('7:00 PM')">
+                                            <svg class="absolute h-full z-0 right-2 top-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979"/>
+                                            </svg>                                                        
+                                        </div>
+                                        <ul id="peopleOptions"
+                                            class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
+                                            <li class="cursor-pointer py-2 px-3 transition-all hover:bg-[#797979]/30"
+                                                onclick="selectOption('people', '2 People')">
+                                                2 People
+                                            </li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                onclick="selectOption('people', '4 People')">
+                                                4 People
+                                            </li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                onclick="selectOption('people', '6 People')">
+                                                6 People
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="">
+                                        <input type="date" id="dateInput" onblur="" onfocus="" class="w-full relative z-30 py-2 px-3 text-[#797979] font-sans outline-none border-b border-[#D2D2D2] md:border-0 rounded-tr-lg md:rounded-0" inputmode="numeric" />
+                                    </div>
+                                    <div class="relative">
+                                        <div class="relative h-full">
+                                            <button id="seatingDropdown"
+                                                class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
+                                                Seating
+                                            </button>
+                                            <svg class="absolute h-full z-0 right-2 top-0 h-7 w-7" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979" />
+                                            </svg>
+                                        </div>
+                                        <ul id="seatingOptions"
+                                            class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto">
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Indoor')">
+                                                Indoor
+                                            </li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30" onclick="selectOption('seating', 'Terrace')">
+                                                Terrace
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="relative">
+                                        <div class="relative h-full">
+                                            <button id="timeDropdown"
+                                                class="w-full relative z-30 text-[#797979] font-sans py-2 px-3 flex items-center justify-between text-left h-full">
+                                                Time
+                                            </button>
+                                            <svg class="absolute h-full z-0 right-2 top-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.78981 8.00017L16.2098 8.00017C16.5422 7.99969 16.868 8.09336 17.1494 8.27033C17.4308 8.44731 17.6563 8.70035 17.7998 9.00017C17.9678 9.35592 18.0326 9.75171 17.9866 10.1424C17.9406 10.5332 17.7858 10.9031 17.5398 11.2102L13.3298 16.3102C13.1646 16.5008 12.9603 16.6537 12.7309 16.7585C12.5014 16.8633 12.2521 16.9175 11.9998 16.9175C11.7475 16.9175 11.4982 16.8633 11.2688 16.7585C11.0393 16.6537 10.835 16.5008 10.6698 16.3102L6.45981 11.2102C6.2138 10.9031 6.05899 10.5332 6.01302 10.1424C5.96706 9.75171 6.03178 9.35592 6.19981 9.00017C6.34335 8.70035 6.56887 8.44731 6.85026 8.27033C7.13164 8.09336 7.4574 7.99969 7.78981 8.00017Z" fill="#797979"/>
+                                            </svg>    
+                                        </div>
+                                        <ul id="timeOptions"
+                                            class="absolute hidden bg-[#fff] rounded shadow-lg mt-1 w-full z-50 text-[#797979] font-sans py-2 max-h-[340px] overflow-y-auto ">
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                onclick="selectOption('time', '6:00 PM')">
+                                                6:00 PM
+                                            </li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                onclick="selectOption('time', '7:00 PM')">
                                                 7:00 PM
-                                            </button>
-                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
-                                                onclick="selectTimeSlot('7:30 PM')">
-                                                7:30 PM
-                                            </button>
-                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
-                                                onclick="selectTimeSlot('8:00 PM')">
+                                            </li>
+                                            <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all hover:bg-[#797979]/30"
+                                                onclick="selectOption('time', '8:00 PM')">
                                                 8:00 PM
-                                            </button>
-                                            <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
-                                                onclick="selectTimeSlot('8:30 PM')">
-                                                8:30 PM
-                                            </button>
+                                            </li>
+                                        </ul>
+                                    </div>    
+                                </div>
+                                <div class="hidden mt-4 z-30 relative" id="radioBtns">
+                                    <div class="flex gap-6 flex-wrap">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                <input type="radio" id="no-preference" name="row" value="No Preference" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                            </span>
+                                            <label for="no-preference" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">No Preference</label>
                                         </div>
-                                    
-                                        <div id="proceedButton" class="mt-4 w-full">
-                                            <button class="bg-red-600 text-white py-2 px-4 rounded-md cursor-pointer font-sans w-full"
-                                                onclick="goToNextSection()">Proceed</button>
+                                
+                                        <div class="flex items-center space-x-2">
+                                            <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                <input type="radio" id="first-row" name="row" value="First Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                            </span>
+                                            <label for="first-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">First Row</label>
+                                        </div>
+                                
+                                        <div class="flex items-center space-x-2">
+                                            <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                <input type="radio" id="second-row" name="row" value="Second Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                            </span>
+                                            <label for="second-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">Second Row</label>
+                                        </div>
+                                
+                                        <div class="flex items-center space-x-2">
+                                            <span class="h-4 w-4 rounded-full flex items-center justify-center p-[2px] border border-[#E50512]">
+                                                <input type="radio" id="last-row" name="row" value="Last Row" class="peer block appearance-none w-full h-full rounded-full checked:border-[#E50512] checked:bg-[#E50512]">
+                                            </span>
+                                            <label for="last-row" class="cursor-pointer text-gray-500 font-sans text-[#E50512]">Last Row</label>
                                         </div>
                                     </div>
-                                                                                       
+                                </div>   
+                                <div id="timeSlots" class="hidden mt-4 z-30 relative">
+                                    <div class="grid grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 flex-wrap mt-7">
+                                        <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
+                                            onclick="selectTimeSlot('6:30 PM')">
+                                            6:30 PM
+                                        </button>
+                                        <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
+                                            onclick="selectTimeSlot('7:00 PM')">
+                                            7:00 PM
+                                        </button>
+                                        <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
+                                            onclick="selectTimeSlot('7:30 PM')">
+                                            7:30 PM
+                                        </button>
+                                        <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
+                                            onclick="selectTimeSlot('8:00 PM')">
+                                            8:00 PM
+                                        </button>
+                                        <button class="bg-[#FDEBEC] text-[#797979] py-2 w-full rounded-md flex items-center justify-center cursor-pointer font-sans"
+                                            onclick="selectTimeSlot('8:30 PM')">
+                                            8:30 PM
+                                        </button>
+                                    </div>
+                                    <div id="proceedButton" class="mt-4 w-full">
+                                        <button class="bg-red-600 text-white py-2 px-4 rounded-md cursor-pointer font-sans w-full"
+                                            onclick="goToNextSection()">Proceed</button>
+                                    </div>
+                                </div>                                                 
                             </div>
                         </div>
                         <div onclick="findTable();"
@@ -210,25 +206,8 @@
                             Find a Table
                         </div>
     
-    
+                        <!-- Secont Page Popup -->
 
-
-
-
-
-
-
-
-
-
-
-                        
-    
-    
-    
-    
-    
-    
                         <div class="space-y-4 hidden" id="details_section">
                             <div class="w-full bg-[#FDEBEC] px-6 py-4 md:text-lg rounded-lg text-[#797979] font-sans z-50 relative font-medium ">
                                 Due to limited availability, we can hold this table for you for <span class="text-[#000]"> 4:19 minutes</span>
@@ -237,7 +216,9 @@
                                 <form class="flex-1 space-y-4" onsubmit="confirmReservation(event)">
                                     <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="First Name" name="" id="">
                                     <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Last Name" name="" id="">
-                                    
+
+                                    <!-- country select dropdoen -->
+
                                     <div class="flex p-1.5 border border-[#D2D2D2] rounded-md w-full flex-1 relative">
                                         <div class="max-w-[120px] w-full flex items-center justify-between relative z-0 cursor-pointer">
                                             <div class="w-full flex items-center justify-between relative !z-0">
@@ -256,13 +237,8 @@
                                         </ul>
                                         <input type="number" minlength="1" max="14" class="border-l border-[#D2D2D2] flex-1 px-4 py-1 text-[#797979] font-sans outline-none z-50 relative" required placeholder="Phone Number" id="phoneNumber">
                                     </div>
-                                    
-                                                                      
-                                    
-                                    
-                                    
-                                    
-                                    
+
+
                                     <input type="email" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none relative z-40" required placeholder="Email" name="" id="">
                                     <div class="relative z-50 relative bg-white">
                                         <div class="relative h-full">
@@ -284,7 +260,6 @@
                                             <li class="cursor-pointer py-2 px-3 hover:bg-gray-200 transition-all" onclick="selectTimeOption('8:00 PM')">8:00 PM</li>
                                         </ul>
                                     </div>
-                                    
                                     <input type="text" class="border border-[#D2D2D2] rounded-md w-full flex-1 px-4 py-2.5 text-[#797979] font-sans outline-none relative z-40" placeholder="Add a Special request (optional)" name="" id="">
                                     <button 
                                         type="button"
@@ -337,9 +312,6 @@
                                             <span>Level 3, Souk al bahar Dubai, Dubai 3371500</span>
                                         </li>
                                     </ul>
-
-
-
                                     <h4 class="text-[#202020] text-2xl">What to know Before you go</h4>
                                     <div class="rounded-xl bg-[#202020] w-full p-7 space-y-3">
                                         <h3 class="text-[#fff] font-semibold font-sans">Important Dining Information</h3>
@@ -366,9 +338,6 @@
                 </div>
 
 
-
-
-
                 <div id="confirmationMessage" class="hidden px-6 py-12">
                     <img src="./img/lastPopup.png" class="mx-auto" alt="">
                     <div>
@@ -384,12 +353,8 @@
         </div>
     </section>
 
-
-
-
-
-
-
+    
+    <!-- Checkbox Contant -->
 
     <!-- <div class="flex gap-2 items-start">
         <input type="checkbox" class="mt-1.5" name="checkbox1" required id="checkbox1">
@@ -403,12 +368,6 @@
         <input type="checkbox" class="mt-1.5" name="checkbox3" required id="checkbox3">
         <label for="checkbox3" class="text-[#797979] font-sans">Yes, I want to get text updates and reminders about my reservations</label>
     </div> -->
-
-
-
-
-
-
 
 
     <script>
@@ -439,10 +398,7 @@
         });
 
 
-
-
         let reservation_popup_main = document.getElementById('reservation_popup_main');
-
         function reservation_popup() {
             reservation_popup_main.classList.add('!block');
         }
@@ -526,7 +482,6 @@
         }
 
 
-
         let selectedTimeSlot = null;
 
         function selectTimeSlot(selectedTime) {
@@ -582,6 +537,8 @@
         }
 
 
+        // Form Validation and get data in console
+
 
 
         function confirmReservation(event) {
@@ -597,7 +554,6 @@
             
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            // Log form data to the console
             console.log("First Name:", firstName);
             console.log("Last Name:", lastName);
             console.log("Email:", email);
@@ -620,19 +576,7 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // country select dropdown funcnality
 
 
         async function fetchCountries() {
@@ -722,14 +666,9 @@
         document.getElementById('phoneNumber').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '').slice(0, 14);
         });
-
         window.onload = initCountryDropdown;
 
-
-
-
-
-
+        
     </script>
 </body>
 </html>
