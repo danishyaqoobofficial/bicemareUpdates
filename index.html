@@ -31,7 +31,7 @@
 
     <!-- Reservation Popup -->
 
-    <section class="hidden" id="reservation_popup_main">
+    <section class="" id="reservation_popup_main">
         <div class="w-full absolute z-50 top-0">
             <div class="overflow-y-auto bg-[#fff]">
                 <div id="reservation_main_detail">
@@ -409,11 +409,6 @@
             reservation_popup_main.classList.add('!block');
         }
 
-        function reservation_popup_close() {
-            reservation_popup_main.classList.remove('!block');
-            location.reload();
-        }
-
         const result = {
             people: "",
             time: "",
@@ -459,7 +454,7 @@
                 }
             }
         }
-
+        
 
         function findTable() {
             if (result.seating === "Terrace") {
