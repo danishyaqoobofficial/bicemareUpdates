@@ -9,16 +9,26 @@
     <style>
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+            -webkit-appearance: none;
+            margin: 0;
         }
+
+        .gradient-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #4285F4, #6F42C1, #EA4335);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Reservation Button -->
 
-    <section class="flex items-center justify-center h-[100vh] w-full">
+    <section class="flex items-center justify-center flex-col h-[100vh] w-full">
+        <h1 class="gradient-text">Hello, Danish</h1>
         <div onclick="reservation_popup()"
             class="border max-w-max border-[#E50512] transition-all hover:bg-[#E50512] hover:text-[#fff] tracking-wide flex items-center justify-center rounded-lg text-theme_black px-[17px] text-lg py-[7px] cursor-pointer">
             Reservation
@@ -26,6 +36,7 @@
     </section>
 
     <!-- Reservation Popup -->
+
 
     <section class="hidden" id="reservation_popup_main">
         <div class="w-full absolute z-50 top-0">
